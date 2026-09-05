@@ -1,0 +1,78 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.nav-pills {
+	@include prefixes(transition, $transition-base);
+	@include themify() {
+		border-bottom: getThemifyVariable('divider');
+	}
+
+	.nav-item {
+		margin-bottom: -1px;
+		@include prefixes(transition, $transition-base);
+	}
+
+	.nav-link {
+		white-space: nowrap;
+		background-color: transparent;
+		border: none;
+		width: 100%;
+		min-height: $spacer * 2;
+		padding: $spacer $spacer * 2;
+		display: flex;
+		align-items: center;
+		position: relative;
+		@include prefixes(transition, $transition-base);
+		@include themify() {
+			color: getThemifyVariable('font--color');
+		}
+		&:hover {
+			border: none;
+			@include themify() {
+				color: getThemifyVariable('font--color-hover');
+			}
+		}
+
+		*[class*="badge__notif--"] {
+		  &::after {
+				top: -0.5rem;
+				right: -1.5rem;
+			}
+		}
+
+		*[class*="bg-circle--"] {
+			cursor: pointer;
+		}
+
+		&.active {
+			font-weight: $font-weight-bold;
+			border: none;
+			border-bottom: 2px solid $primary;
+			border-radius: 0;
+			border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
+			background-color: transparent;
+			z-index: 1;
+			@include prefixes(transition, $transition-base);
+			cursor: default;
+			&:hover {
+				@include themify() {
+					color: getThemifyVariable('font--color');
+				}
+			}
+		}
+
+
+	}
+
+}
+
+// @include media-breakpoint-down(xs) {
+
+// 	.nav-pills {
+// 		.nav-item {
+// 			width: 100%;
+// 		}
+// 	}
+
+// }

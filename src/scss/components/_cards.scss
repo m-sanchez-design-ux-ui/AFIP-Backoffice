@@ -1,0 +1,136 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.card {
+  @include prefixes(transition, $transition-base);
+  @include themify() {
+    background-color: getThemifyVariable('components--background');
+    box-shadow: getThemifyVariable('shadow');
+  }
+  &:hover {
+    @include themify() {
+      box-shadow: getThemifyVariable('shadow--hover');
+    }
+  }
+  &.disabled,
+	&:disabled,
+	&[disabled],
+	&[readonly] {
+    @include themify() {
+      opacity: getThemifyVariable('opacity');
+    }
+  }
+}
+
+.card-header,
+.card-footer:not(.bg-opacity--light) {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 $spacer * 2;
+}
+.card-header {
+  padding-top: 2rem;
+}
+.card-header {
+  padding-bottom: $spacer;
+  @include themify() {
+    border-bottom: getThemifyVariable('divider');
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+  }
+}
+
+.card-footer {
+  padding-bottom: $spacer;
+  @include themify() {
+    border-top: getThemifyVariable('divider');
+  }
+}
+
+// Card colors
+@each $color, $value in $theme-colors {
+
+  .card--#{$color} {
+    border-left: math.div($spacer, 4) solid $value;
+  }
+
+}
+
+.card__iconbox--wave {
+  overflow: hidden;
+  position: relative;
+  &::after {
+    content: ' ';
+    @include themify() {
+      background-color: getThemifyVariable('section--background');
+    }
+    border-radius: 35%;
+    width: 1000px;
+    height: 1025px;
+    position: absolute;
+    bottom: 65%;
+    left: -250px;
+    z-index: 0;
+    @include prefixes(transform, rotate(45deg));
+    @include prefixes(animation-name, wave);
+    @include prefixes(animation-duration, 30s);
+    @include prefixes(animation-iteration-count, infinite);
+    @include prefixes(animation-direction, alternate);
+    @include prefixes(animation-timing-function, linear);
+  }
+  > div {
+    z-index: 1;
+  }
+}
+
+@include keyframes(wave) {
+  from {
+    @include prefixes(transform, rotate(0deg));
+  }
+  from {
+    @include prefixes(transform, rotate(360deg));
+  }
+}
+
+// @include media-breakpoint-up(lg) {
+//   .card--collapse {
+//     .collapse {
+//       display: block;
+//     }
+//   }
+// }
+
+@media screen and (min-width: 992px) and (orientation: landscape) {
+  .card--collapse {
+    .collapse:not(.show) {
+      display: block !important;
+    }
+  }
+}
+
+
+// @include media-breakpoint-down(md) {
+
+//   .card--collapse {
+//     .collapse.show,
+//     .collapsing {
+//       display: none !important;
+//     }
+//     .collapse:not(.show) {
+//       display: block !important;
+//     }
+//   }
+
+// }
+
+// Card collapse chevron-down
+.card__chevron-down {
+  &:not(.collapsed) {
+    .feather.feather-chevron-down {
+      @include prefixes(transition, $transition-base);
+      @include prefixes(transform, rotate(180deg));
+    }
+  }
+}

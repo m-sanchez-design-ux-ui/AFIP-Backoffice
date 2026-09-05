@@ -1,0 +1,139 @@
+<div
+  id="stepper-card"
+  data-accordion="open"
+  class="bg-white rounded-lg shadow py-10 px-6 sm:px-14 mt-3"
+>
+  @if(this.stepperData()[0].id == this.stepError.code) {
+
+  <ol class="flex mb-4">
+    <li
+      class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-red-500 after:border-4 after:inline-block dark:after:border-red-500"
+    >
+      <div
+        class="flex items-center justify-center size-4 sm:size-6 bg-red-500 rounded-full dark:bg-{{
+          this.stepError.color
+        }} shrink-0"
+      ></div>
+    </li>
+
+    <li
+      class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-300 after:border-4 after:inline-block dark:after:border-gray-300"
+    >
+      <div
+        class="flex items-center justify-center bg-white rounded-full w-8 h-8 sm:h-12 sm:w-12 dark:bg-white shrink-0"
+      >
+        <i-feather
+          name="x"
+          class="text-gray-800 !w-4 !h-4 sm:!w-6 sm:!h-6"
+        ></i-feather>
+
+        <div class="absolute mt-20 sm:mt-[70px] flex flex-col items-center">
+          <!-- <span
+            class="text-[11px] leading-none sm:text-sm font-semibold my-1 text-gray-600 w-40 sm:w-fit text-center"
+            >{{ this.stepperData?.error?.title }}</span
+          >
+          <span
+            class="text-[11px] leading-none sm:text-sm font-medium text-gray-600 w-28 sm:w-fit text-center"
+            >{{ this.stepperData?.error?.message }}</span
+          > -->
+        </div>
+      </div>
+    </li>
+
+    <li class="flex items-center">
+      <div
+        data-tooltip-target="tooltip-default-error"
+        class="flex items-center justify-center bg-{{
+          this.stepError.color
+        }} rounded-full w-8 h-8 sm:h-12 sm:w-12 dark:bg-white shrink-0"
+      >
+        <i-feather
+          name="alert-triangle"
+          class="text-white !w-4 !h-4 sm:!w-6 sm:!h-6"
+        ></i-feather>
+
+        <!--label text start-->
+        <div class="absolute mt-20 flex flex-col items-center bg-transparent">
+          <span
+            class="text-[11px] leading-tight sm:text-sm font-semibold text-gray-900 w-20 sm:w-fit text-center"
+            >{{ this.stepError.title }}</span
+          >
+        </div>
+        <!--label text end-->
+
+        <!--Tooltips start-->
+        <div
+          id="tooltip-default-error"
+          role="tooltip"
+          class="absolute z-10 invisible inline-block px-3 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 tooltip"
+        >
+          {{ this.stepperData()[0].date }}
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <!--Tooltips end-->
+      </div>
+    </li>
+  </ol>
+
+  } @else {
+  <ol class="flex">
+    @for (item of this.steps; track $index) {
+    <li [ngClass]="this.getLineColor($index)">
+      <button
+        [attr.data-tooltip-target]="'tooltip-default-' + $index"
+        data-tooltip-style="light"
+        class="flex items-center justify-center rounded-full shrink-0"
+        [ngClass]="this.getItemClasses(item, $index)"
+      >
+        @if ($index >= this.actualIndex) {
+        <!-- icono-->
+        <i-feather
+          name="{{ item.icon }}"
+          class="{{
+            item.color == 'primary'
+              ? 'text-gray-900'
+              : $index == this.actualIndex
+              ? 'text-white'
+              : 'text-gray-400'
+          }} !w-4 !h-4 sm:!w-6 sm:!h-6"
+        >
+        </i-feather>
+        } @if(this.actualIndex == $index) {
+        <!--label text start-->
+        <div class="absolute mt-20 flex flex-col items-center bg-transparent">
+          <span
+            class="text-[11px] leading-tight sm:text-sm font-semibold text-gray-900 w-20 sm:w-fit text-center"
+          >
+            {{ item.title }}
+          </span>
+        </div>
+        <!--label text end-->
+        } @if(this.actualIndex != $index) {
+        <!--label text secondary start-->
+        <div class="absolute mt-20 flex flex-col items-center bg-transparent">
+          <span
+            class="text-[11px] leading-tight sm:text-sm font-semibold text-gray-300 w-20 sm:w-fit text-center"
+          >
+            {{ item.title }}
+          </span>
+        </div>
+        <!--label text secondary end-->
+        }
+        <!--tooltip start-->
+        <!--tooltip end-->
+      </button>
+      @if($index < stepperData().length) {
+      <div
+        [id]="'tooltip-default-' + $index"
+        role="tooltip"
+        class="absolute z-10 invisible inline-block px-3 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 tooltip"
+      >
+      Fecha Estado: {{ formatDateToDDMMYYYY(item.date!) }}
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+      }
+    </li>
+    }
+  </ol>
+  }
+</div>

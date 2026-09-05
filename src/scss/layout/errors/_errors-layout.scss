@@ -1,0 +1,77 @@
+@import "../../abstracts/abstracts-module";
+
+.errors__container {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: radial-gradient(circle, lighten($primary, $theme-color-interval),  $primary);
+
+    .error__img {
+        position: relative;
+        width: 50vw;
+        height: 60vh;
+        max-width: 60rem;
+
+        img {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    }
+
+    
+    p {
+        margin-top: 2rem;
+        color: $white;
+        font-size: $h1-font-size; 
+        text-align: center;
+        max-width: 50vw;
+    }
+
+
+    footer {
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: $spacer * 2;
+        right: 0;
+        width: 100%;
+        z-index: $zindex-fab;
+        @include prefixes(animation-name, error__footer);
+        @include prefixes(animation-duration, 1s);
+        @include prefixes(animation-delay, 1s);
+        @include prefixes(animation-fill-mode, forwards);
+        @include prefixes(transform, translateY(30vh));
+    }
+     
+    @include keyframes(error__footer) {
+        to {
+            @include prefixes(transform, translateY(0));
+        }
+    }
+}
+
+// @include media-breakpoint-down(md) {
+//     .errors__container {  
+//         .error__img {
+//             width: 70vw;
+//         }
+
+//         p {
+//             font-size: $h2-font-size;
+//             max-width: 70vw;
+//         }
+//     }
+
+// }
+
+// @include media-breakpoint-up(fhd) {
+//     .errors__container {
+//         .error__img {
+//             height: 70vh;
+//         }
+//     }
+// }

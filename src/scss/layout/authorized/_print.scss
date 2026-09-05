@@ -1,0 +1,29 @@
+/* PRINT */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+
+  html, body {
+    width: 297mm;
+    height: 420mm;
+  }
+
+  section {
+    background-color: transparent;
+  }
+
+  .card {
+    .card-header[data-bs-toggle="collapse"] {
+      i-chevron-down {
+        display: none;
+      }
+      & + .card-body.collapse {
+        display: block;
+      }
+    }
+  }
+
+}

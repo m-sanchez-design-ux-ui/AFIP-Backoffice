@@ -1,0 +1,71 @@
+<div class="container mx-auto p-6">
+  @if(!fileDetailData()){
+  <!--This line has been comment <div class="flex items-center justify-center">Loading...</div> -->
+
+  } @else {
+  <!--breadcrumb start-->
+  <div class="!m-0">
+    <div class="row flex items-center justify-between">
+      <div class="col-md-12 col-lg-6 inline-block">
+        <app-breadcrumb [breadcrumItems]="this.breadcrumb"></app-breadcrumb>
+      </div>
+    </div>
+  </div>
+  <!--breadcrumb end-->
+
+  <!--card info start-->
+  <div
+    class="my-8 w-full min-h-20 p-6 bg-white shadow rounded-lg grid grid-cols-1 lg:grid-cols-[50%,20%,30%] gap-4"
+  >
+    <div class="flex flex-col flex-1">
+      <h2 class="text-xl !text-gray-800 font-medium">Nombre del archivo</h2>
+      <p
+        data-tooltip-target="tooltip-light"
+        data-tooltip-style="light"
+        class="truncate"
+      >
+        {{ fileDetailData()?.filename }}
+      </p>
+      <div
+        id="tooltip-light"
+        role="tooltip"
+        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+      >
+        {{ fileDetailData()?.filename }}
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <h2 class="text-xl !text-gray-800 font-medium">CUIT</h2>
+      <p>{{ fileDetailData()?.cuit }}</p>
+    </div>
+    <div class="flex flex-col">
+      <h2 class="text-xl !text-gray-800 font-medium">Nro. punto de venta</h2>
+      <p>{{ fileDetailData()?.pos }}</p>
+    </div>
+  </div>
+  <!--card info end-->
+
+  <h2 class="text-xl !text-gray-800 font-medium mt-4">Estado del archivo</h2>
+
+  <!--card Stepper start-->
+
+  <div class="my-8">
+    <!--<app-stepper [stepperData]="this.stepStatus()"></app-stepper>-->
+    <app-stepper [stepperData]="this.stepStatus()"></app-stepper>
+  </div>
+
+  <!--card Stepper end-->
+
+  <h2 class="text-xl !text-gray-800 font-medium my-8">Detalle del Archivo</h2>
+
+  <!--Data table start-->
+  <div>
+    <app-data-table
+      [titlesList]="titlesList"
+      [dtOptions]="dtOptions"
+    ></app-data-table>
+  </div>
+  <!--Data table end-->
+  }
+</div>

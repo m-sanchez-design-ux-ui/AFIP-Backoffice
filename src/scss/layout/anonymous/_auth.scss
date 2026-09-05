@@ -1,0 +1,88 @@
+@import "../../vendors/bootstrap-abstracts";
+@import "../../abstracts/abstracts-module";
+
+.auth__container,
+.auth__aside {
+  min-height: 100vh;
+}
+
+.auth__container {
+  width: 100%;
+  background-color: #f7f5ff;
+  .auth__logo {
+    width: auto;
+    height: $spacer * 9;
+    margin: $spacer * 4 0 0 0;
+  }
+
+  > div:last-child {
+    height: calc(100% - 158px);
+    overflow: auto;
+    padding-bottom: $spacer * 4;
+  }
+}
+
+.auth__aside {
+  background: url("/assets/images/imagenportada.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.auth__content {
+  width: 390px;
+
+  .auth__header {
+    margin-bottom: calc($spacer / 2);
+    p {
+      margin-bottom: 0;
+    }
+    i-chevron-left {
+      margin-bottom: $spacer * 3;
+    }
+    *[class^="icon"] {
+      margin-bottom: $spacer;
+    }
+  }
+
+  .auth__body {
+    margin: $spacer 0;
+    & > .form-group:last-child,
+    & > .card:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .auth__footer {
+    margin-top: $spacer * 2;
+  }
+
+  .notifications__container {
+    top: 1rem;
+  }
+}
+
+// Media Queries
+// @include media-breakpoint-down(md) {
+//   .auth__container {
+//     width: 100vw;
+
+//     .auth__logo {
+//       margin: $spacer * 4 0 $spacer * 3 0;
+//     }
+
+//     .auth__content {
+//       width: 540px;
+//     }
+
+//     > div:last-child {
+//       height: calc(100% - 163px);
+//     }
+
+//   }
+// }
+
+// @include media-breakpoint-down(sm) {
+//   .auth__container .auth__content {
+//     width: 70vw;
+//   }
+// }

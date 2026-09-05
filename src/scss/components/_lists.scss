@@ -1,0 +1,46 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.list-group {
+	.list-group-item {
+		@include themify() {
+			border: getThemifyVariable('divider');
+		}
+		&:hover {
+			@include themify() {
+			background-color: getThemifyVariable('components--background-hover');
+			}
+		}
+		&:disabled,
+		&.disabled,
+		&[disabled] {
+			opacity: $disabled-opacity;
+			&:hover {
+				& > a {
+					cursor: default;
+				}
+			}
+		}
+	}
+	&.list-group-flush {
+		.list-group-item {
+			border-right: 0;
+			border-left: 0;
+		}
+	}
+	
+}
+
+@each $name, $color in $theme-colors {
+	.list-style--#{$name} {
+		list-style: none;
+			li::before {
+			content: "\2022";
+			color: $color;
+			font-weight: bold;
+			display: inline-block; 
+			width: 1em;
+			margin-left: -1em;
+		}
+	}
+}

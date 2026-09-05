@@ -1,0 +1,37 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.popover {
+  @include themify() {
+    background-color: getThemifyVariable('components--background');
+    box-shadow: getThemifyVariable('shadow');
+    > .arrow {
+      border-right-color: getThemifyVariable('components--background');
+    }
+  }
+
+  .popover-header {
+    color: $white !important;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  .popover-body {
+    .list-group {
+      padding-left: 2rem;
+      &::before {
+        left: 0.5rem;
+      }
+    }
+  }
+
+}
+
+.bs-popover-right > .arrow::after,
+.bs-popover-auto[x-placement^="right"] > .arrow::after,
+.bs-popover-right > .arrow::before,
+.bs-popover-auto[x-placement^="right"] > .arrow::before {
+  @include themify() {
+    border-right-color: getThemifyVariable('components--background');
+  }
+}

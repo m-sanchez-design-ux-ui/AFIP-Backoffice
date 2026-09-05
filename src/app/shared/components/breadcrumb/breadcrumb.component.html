@@ -1,0 +1,25 @@
+<nav class="flex min-h-10" aria-label="Breadcrumb">
+  <ol
+    class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+  >
+    @for (item of this.breadcrumItems(); track $index) {
+    <li class="flex items-center text-sm !text-gray-800 font-medium">
+      @if ($index > 0) {
+      <i-feather
+        name="chevron-right"
+        class="!w-5 !h-5 text-gray-800 mr-2"
+      ></i-feather>
+      } @if (!item.isLink) {
+      <span class="font-semibold !text-gray-800">{{ item.text }}</span>
+      } @if (item.isLink) {
+      <span
+        [routerLink]="item.routerLink"
+        class="cursor-pointer !text-gray-800"
+      >
+        {{ item.text }}
+      </span>
+      }
+    </li>
+    }
+  </ol>
+</nav>

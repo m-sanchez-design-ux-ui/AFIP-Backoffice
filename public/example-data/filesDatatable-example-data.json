@@ -1,0 +1,115 @@
+{
+  "draw": 1,
+  "recordsTotal": 11,
+  "recordsFiltered": 11,
+  "data": [
+    {
+      "id": "1",
+      "cuit": "30-70778626-0",
+      "salePoint": "0001",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 1,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "2",
+      "cuit": "30-70778626-0",
+      "salePoint": "0002",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 2,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "3",
+      "cuit": "30-70778626-0",
+      "salePoint": "0003",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 3,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "4",
+      "cuit": "30-70778626-0",
+      "salePoint": "0004",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 99,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "5",
+      "cuit": "30-70778626-0",
+      "salePoint": "0005",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 1,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "6",
+      "cuit": "30-70778626-0",
+      "salePoint": "0006",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 2,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "7",
+      "cuit": "30-70778626-0",
+      "salePoint": "0007",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 3,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "8",
+      "cuit": "30-70778626-0",
+      "salePoint": "0008",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 99,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "9",
+      "cuit": "30-70778626-0",
+      "salePoint": "0009",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 1,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "10",
+      "cuit": "30-70778626-0",
+      "salePoint": "00010",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 2,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "11",
+      "cuit": "30-70778626-0",
+      "salePoint": "00011",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 3,
+      "createdAt": "2024-01-15T10:30:00"
+    },
+    {
+      "id": "12",
+      "cuit": "30-70778626-0",
+      "salePoint": "00012",
+      "fileName": "nombre_archivo.pem",
+      "period": "01/01/2024 al 07/01/2024",
+      "status": 99,
+      "createdAt": "2024-01-15T10:30:00"
+    }
+  ]
+}

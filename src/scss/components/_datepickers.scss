@@ -1,0 +1,157 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+ngb-datepicker {
+
+    &.dropdown-menu {
+        @include themify() {
+            box-shadow: getThemifyVariable('shadow') !important;
+        }
+    }
+
+    .ngb-dp-header {
+        background-color: darken($primary, $theme-color-interval);
+        padding: $spacer 0;
+
+        .ngb-dp-arrow-btn {
+            &:hover {
+                .ngb-dp-navigation-chevron {
+                    color: $gray-200;
+                }
+            }
+            .ngb-dp-navigation-chevron {
+                color: $white;
+            }
+        }
+
+        .custom-select {
+            color: $white;
+            font-size: $font-size-base;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                color: $gray-200;
+            }
+            &:focus {
+                & > option:hover,
+                & > option:checked {
+                    background-color: $primary;
+                }
+            }
+            option {
+                @include themify() {
+                    color: getThemifyVariable('font--color') !important;
+                    background-color: getThemifyVariable('components--background') !important;
+                }
+            }
+        }
+
+    }
+
+    .ngb-dp-months {
+
+        .ngb-dp-week {
+            @include themify() {
+                background-color: getThemifyVariable('components--background') !important;
+            }
+        }
+
+        .ngb-dp-weekdays {
+            @include themify() {
+                border-bottom:  getThemifyVariable('border') !important;
+            }
+        }
+
+        .ngb-dp-weekday {
+            font-style: normal;
+            text-transform: uppercase;
+            @include themify() {
+                color: getThemifyVariable('font--color') !important;
+            }
+        }
+
+        .ngb-dp-week {
+            .ngb-dp-day {
+                @include themify() {
+                    color: getThemifyVariable('font--color') !important;
+                }
+            }
+        }
+
+    }
+
+    .btn-light:not(.active) {
+        border-radius: $border-radius;
+        box-shadow: none !important;
+        @include themify() {
+            color: getThemifyVariable('font--color') !important;
+        }
+        &:hover {
+            @include themify() {
+                color: getThemifyVariable('font--color-hover') !important;
+                background-color: getThemifyVariable('components--background-hover') !important;
+            }
+        }
+        &.btn-primary {
+            color: $white !important;
+        }
+    }
+
+    .ngb-dp-today {
+        .btn-light.active {
+            color: $primary !important;
+            background-color: rgba($primary, 0.4) !important;
+        }
+    }
+
+}
+
+// ngx-bootstrap/#/datepicker
+.bs-datepicker-container {
+    padding: 0;
+}
+
+.bs-datepicker {
+    background-color: transparent;
+    @include themify() {
+        box-shadow: getThemifyVariable('shadow') !important;
+    }
+}
+
+.bs-datepicker-head {
+    background-color: darken($primary, $theme-color-interval) !important;
+    bs-datepicker-navigation-view {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.bs-datepicker-body {
+    border: none !important;
+    @include themify() {
+        background-color: getThemifyVariable('components--background') !important;
+    }
+
+    table td {
+        @include themify() {
+            color: getThemifyVariable('font--color') !important;
+        }
+        &:hover {
+            @include themify() {
+                color: getThemifyVariable('font--color-hover') !important;
+            }
+        }
+        span.selected {
+            color: $primary !important;
+            background-color: rgba($primary, 0.4) !important;
+        }
+    }
+
+    .is-highlighted > span {
+        @include themify() {
+            background-color: getThemifyVariable('components--background-hover') !important;
+        }
+    }
+}

@@ -1,0 +1,172 @@
+<div class="container mx-auto p-6 h-full">
+  <div class="w-full grid">
+    <app-breadcrumb [breadcrumItems]="this.breadcrumb"></app-breadcrumb>
+  </div>
+  <h2 class="text-xl !text-gray-600 font-medium mt-4">Nombre de Usuario</h2>
+  <h4 class="text-base !text-gray-600 font-normal my-4 uppercase">Origin</h4>
+  <div class="bg-white p-4 rounded-lg shadow border mb-10">
+    <form>
+      <div
+        class="bg-white grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-6 p-4"
+      >
+        <div class="p-0">
+          <!-- Contenido de la celda 1 -->
+          <label
+            for="first_name"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Nombre *</label
+          >
+          <input
+            type="text"
+            required
+            id="first_name"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Nombre del usuario"
+            required
+          />
+          <span id="Required-text" class="mt-2 text-sm text-red-600">
+            Por favor, completa este campo para actualizar.
+          </span>
+        </div>
+        <div class="p-0">
+          <!-- Contenido de la celda 2 -->
+          <label
+            for="last_name"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Apellido *</label
+          >
+          <input
+            type="text"
+            required
+            id="last_name"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Apellido del usuario"
+            required
+          />
+        </div>
+        <div class="p-0">
+          <!-- Contenido de la celda 3 -->
+          <label
+            for="first_name"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Email *</label
+          >
+          <input
+            type="text"
+            required
+            id="first_name"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="usuario@mail.com"
+            required
+          />
+          <span id="Required-text" class="mt-2 text-sm text-red-600">
+            Por favor, ingresa un dato válido.
+          </span>
+        </div>
+        <div class="p-0">
+          <!-- Contenido de la celda 4 -->
+          <label
+            for="last_name"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Teléfono *</label
+          >
+          <input
+            type="text"
+            required
+            id="last_name"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Teléfono del usuario"
+            required
+          />
+
+          <span
+            id="helper-text-explanation"
+            class="mt-2 text-sm text-gray-500 dark:text-gray-400"
+          >
+            Formato: 011 0000 0000.
+          </span>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="mx-auto my-4 flex items-center bg-primary text-white hover:bg-opacity-75 hover:text-white hover:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-full text-base px-5 py-2 text-center m-0 [font-smoothing:_antialiased] [-webkit-font-smoothing:_antialiased]"
+      >
+        Actualizar datos
+      </button>
+    </form>
+  </div>
+  <div class="bg-white p-4 rounded-lg shadow border mb-5">
+    <form>
+      <div
+        class="bg-white grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-6 p-4"
+      >
+        <div class="p-0">
+          <!-- Contenido de la celda 1 -->
+          <label
+            for="password"
+            class="block mb-2 text-sm font-medium !text-gray-600 dark:text-white"
+            >Contraseña Actual *</label
+          >
+          <input
+            formControlName="password"
+            type="password"
+            id="password"
+            class="font-black tracking-widest bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="•••••••••"
+            required
+          />
+          <span id="invalid-password" class="mt-2 text-sm text-red-600">
+            La contraseña ingresada no coincide con la contraseña actual.
+          </span>
+        </div>
+
+        <div class="p-0">
+          <!-- Contenido de la celda 2 -->
+          <label
+            for="password"
+            class="block mb-2 text-sm font-medium !text-gray-600 dark:text-white"
+            >Nueva Contraseña *</label
+          >
+          <input
+            formControlName="password"
+            type="password"
+            id="password"
+            class="font-black tracking-widest bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="•••••••••"
+            required
+          />
+          <span id="Required-text" class="mt-2 text-sm text-red-600">
+            Por favor, completa este campo para actualizar.
+          </span>
+        </div>
+        <div class="p-0">
+          <!-- Contenido de la celda 3 -->
+          <label
+            for="password"
+            class="block mb-2 text-sm font-medium !text-gray-600 dark:text-white"
+            >Repetir Nueva Contraseña *</label
+          >
+          <input
+            formControlName="password"
+            type="password"
+            id="password"
+            class="font-black tracking-widest bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="•••••••••"
+            required
+          />
+          <span id="invalid-password" class="mt-2 text-sm text-red-600">
+            Las contraseñas no coinciden. Por favor, verifica y vuelve a
+            intentar.
+          </span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="mx-auto my-4 flex items-center bg-primary text-white hover:bg-opacity-75 hover:text-white hover:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-full text-base px-5 py-2 text-center m-0 [font-smoothing:_antialiased] [-webkit-font-smoothing:_antialiased]"
+      >
+        Actualizar contraseña
+      </button>
+    </form>
+  </div>
+</div>

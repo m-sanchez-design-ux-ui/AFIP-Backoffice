@@ -1,0 +1,86 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.breadcrumb__container {
+  margin-top: $spacer;
+  @include themify() {
+    border-bottom: getThemifyVariable('divider');
+  }
+}
+
+.breadcrumb-item {
+  @include themify {
+    color: getThemifyVariable('font--color');
+  }
+  display: -webkit-inline-flex;
+  display: -ms-inline-flex;
+  display: inline-flex;
+  align-items: center;
+  &:first-child {
+    font-size: $font-size-base*1.1;
+    color: $gray-300;
+    & > a {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &:nth-child(2) {
+    font-size: $font-size-base*1.1;
+    font-weight: $font-weight-bold;
+    color: $primary;
+    & > a {
+      display: flex;
+      align-items: center;
+    }
+  }
+  & .bg-circle--light {
+    margin-right: $spacer;
+  }
+  &:hover {
+    & .bg-circle--light {
+      opacity: 0.9;
+      @include prefixes(transition, $transition-base);
+      // .feather {
+      //   @include prefixes(transition, $transition-base);
+      //   @include prefixes(animation-name, iconBouncedY);
+      //   @include prefixes(animation-duration, 1s);
+      //   @include prefixes(animation-timing-function, cubic-bezier(0.280, 0.840, 0.420, 1));
+      //   @include prefixes(animation-iteration-count, infinite);
+      // }
+    }
+  }
+
+  & + .breadcrumb-item::before {
+    content: '';
+    background-image: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#{$body-color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>'), "#", "%23");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: $spacer * 2;
+    height: $spacer * 2;
+    @include prefixes(transition, $transition-base);
+  }
+  
+  &:hover ~ .breadcrumb-item::before {
+    content: '';
+    background-image: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#{$body-color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>'), "#", "%23");
+    background-repeat: no-repeat;
+    background-position: center;
+    @include prefixes(transition, $transition-base);
+    @include prefixes(animation-name, iconBouncedX);
+    @include prefixes(animation-duration, 1s);
+    @include prefixes(animation-delay, 0.5s);
+    @include prefixes(animation-timing-function, cubic-bezier(0.280, 0.840, 0.420, 1));
+  }
+
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    opacity: $disabled-opacity;
+    cursor: default;
+    pointer-events: none;
+    &:hover ~ .breadcrumb-item::before {
+      @include prefixes(animation, none);
+    }
+  }
+
+}

@@ -1,0 +1,113 @@
+@import "../abstracts/abstracts-module";
+
+.toast__container {
+  //z-index: $zindex-toast;
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+}
+
+$toast-color: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+@each $name, $color in $toast-color {
+  .toast--#{$name} {
+    background-color: rgba($color, 0.96);
+    &:hover {
+      background-color: rgba($color, 1);
+    }
+    .btn-outline-white:hover {
+      color: $color;
+    }
+  }
+  .toast--warning {
+    h4,
+    p {
+      color: darken($warning, 40%) !important;
+    }
+    .feather {
+      stroke: darken($warning, 40%) !important;
+    }
+  }
+}
+
+$toast-size: (
+  "full": 100%,
+);
+
+@each $name, $size in $toast-size {
+  .toast--#{$name} {
+    max-width: $size;
+  }
+}
+
+*[class*="toast--"] {
+  @include prefixes(animation-name, alertsShow);
+  @include prefixes(animation-duration, 1s);
+
+  .bg-circle--white {
+    width: $spacer * 3 !important;
+    height: $spacer * 3 !important;
+  }
+
+  h4,
+  p {
+    color: $white;
+  }
+
+  p {
+    word-break: break-word;
+    margin-bottom: 0;
+  }
+
+  .close {
+    color: $white;
+    line-height: 0.5;
+    margin-left: $spacer;
+    align-self: start;
+  }
+
+  .close:not(:disabled):not(.disabled):hover {
+    color: $white;
+    opacity: 1;
+  }
+
+  .close:not(:disabled):not(.disabled):focus {
+    outline: none !important;
+  }
+}
+
+.auth__container,
+.sign-up-form__container,
+.section__container {
+  .toast__container {
+    // z-index: $zindex-toast;
+    position: fixed;
+    right: 1rem;
+  }
+}
+
+.auth__container,
+.sign-up-form__container {
+  .toast__container {
+    top: 1rem;
+  }
+}
+
+.section__container {
+  .toast__container {
+    top: 5rem;
+  }
+}
+.section__header {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,201 @@
+@import "../../themes/themes-module";
+@import "../../abstracts/abstracts-module";
+
+.header__container {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex: 1 100%;
+  align-items: center;
+
+  &.sticky-top {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+    }
+  }
+
+  .navbar {
+    width: 100%;
+    height: $spacer * 4;
+    background-color: $primary;
+    @include themify() {
+      box-shadow: getThemifyVariable("shadow");
+    }
+
+    & > .navbar-brand {
+      background-image: assets(images, "Group-L/GRUPO_L-AFIP.svg");
+      background-size: 75%;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: $spacer * 17;
+      height: $spacer * 4;
+      @include prefixes(transition, $transition-base);
+    }
+
+    .btn:not(*[class*="quick--"]) {
+      background-color: transparent;
+      border: 0;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include themify {
+        background-color: getThemifyVariable("components--background-hover");
+      }
+      &:hover {
+        .feather.feather-bell,
+        .feather.feather-user {
+          @include prefixes(transition, $transition-base);
+          @include prefixes(animation-name, iconBouncedY);
+          @include prefixes(animation-duration, 1s);
+          @include prefixes(
+            animation-timing-function,
+            cubic-bezier(0.28, 0.84, 0.42, 1)
+          );
+          // @include prefixes(animation-iteration-count, infinite);
+        }
+        .feather.feather-chevrons-left,
+        .feather.feather-menu {
+          @include prefixes(transition, $transition-base);
+          @include prefixes(animation-name, iconBouncedX);
+          @include prefixes(animation-duration, 1s);
+          @include prefixes(animation-delay, 0.5s);
+          @include prefixes(
+            animation-timing-function,
+            cubic-bezier(0.28, 0.84, 0.42, 1)
+          );
+        }
+      }
+
+      .feather {
+        stroke-width: 2px;
+        @include prefixes(transition, $transition-base);
+        &.feather-menu {
+          line:nth-child(2),
+          line:last-child {
+            //color: $secondary;
+            transform-origin: 2px;
+          }
+          line:nth-child(2) {
+            @include prefixes(transform, scaleX(0.5));
+          }
+          line:last-child {
+            @include prefixes(transform, scaleX(0.8));
+          }
+        }
+        &.feather-chevrons-left {
+          polyline:last-child {
+            //color: $secondary;
+          }
+        }
+        &.feather-bell {
+          stroke-width: 2px;
+          path:last-child {
+            //color: $secondary;
+          }
+        }
+        &.feather-user {
+          stroke-width: 2px;
+          circle {
+            //color: $secondary;
+          }
+        }
+      }
+    }
+
+    *[class*="badge__notif--"] {
+      height: $spacer * 1.5;
+    }
+
+    .dropdown {
+      .dropdown-menu {
+        min-width: $spacer * 19;
+        left: -220px;
+      }
+    }
+  }
+
+  &.header--collapse {
+    .navbar {
+      & > .navbar-brand {
+        background-image: assets(images, "Group-L/GL.svg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: $spacer * 4;
+      }
+
+      .btn:not(*[class*="quick--"]) {
+        &:hover {
+          .feather.feather-chevrons-left {
+            @include prefixes(transition, $transition-base);
+            @include prefixes(transform, rotate(180deg));
+            @include prefixes(animation-name, iconBouncedX);
+            @include prefixes(animation-duration, 1s);
+            @include prefixes(animation-delay, 0.5s);
+            @include prefixes(
+              animation-timing-function,
+              cubic-bezier(0.28, 0.84, 0.42, 1)
+            );
+          }
+        }
+        .feather.feather-chevrons-left {
+          @include prefixes(transition, $transition-base);
+          @include prefixes(transform, rotate(180deg));
+        }
+      }
+    }
+  }
+}
+
+// @include media-breakpoint-down(sm) {
+
+//   .header__container {
+//     .navbar {
+
+//       & > .navbar-brand {
+//         background-size: 80% !important;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         width: $spacer * 8 !important;
+//         height: $spacer * 4;
+//         margin-right: 0;
+//       }
+
+//     }
+//   }
+
+//   .header__container.header--collapse {
+//     .navbar {
+
+//       & > .navbar-brand {
+//         background-image: assets(images, 'logo-cliprox-blanco-horizontal.svg');
+//         background-size: 80% !important;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         width: $spacer * 8 !important;
+//         height: $spacer * 4;
+//         margin-right: 0;
+//         @include prefixes(transition, $transition-base);
+//       }
+
+//     }
+//   }
+
+// }
+
+// THEMES
+.dark {
+  .header__container {
+    .navbar {
+      .text-light {
+        color: $white !important;
+      }
+    }
+  }
+}

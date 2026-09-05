@@ -1,0 +1,315 @@
+@import "../../themes/themes-module";
+@import "../../abstracts/abstracts-module";
+
+.nav__container {
+  width: $spacer * 18;
+  height: calc(100vh - #{$spacer * 4});
+  padding: 0 0 $spacer * 2;
+  display: flex;
+  flex: 0 0 $spacer * 16;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  top: $spacer * 4;
+  @include prefixes(transition, $transition-base);
+  @include themify() {
+    background-color: getThemifyVariable('components--background');
+    box-shadow: getThemifyVariable('shadow');
+  }
+
+  .nav {
+    padding-top: $spacer * 1.5;
+
+    .nav-link {
+      width: 100%;
+      // @include text-truncate();
+      // font-size: .9em;
+
+      p {
+        color: $light;
+        // @include text-truncate();
+        white-space: pre-wrap;
+        margin-bottom: 0;
+        @include prefixes(transition, $transition-base);
+      }
+
+      &:not(.collapsed) {
+        .feather.feather-chevron-down {
+          @include prefixes(transition, $transition-base);
+          @include prefixes(transform, rotate(180deg));
+        }
+      }
+      .feather.feather-chevron-down {
+        @include prefixes(transition, $transition-base);
+      }
+
+      &:hover {
+        *[class*="bg-circle-outline--"] {
+          background-color: lighten($light, 10%);
+          border-color: lighten($light, 10%);
+          box-shadow: 0 0 math.div($spacer, 2) rgba(lighten($light, 10%), 0.6);
+        }
+        *[class*="bg-circle-outline--"] .feather {
+          color: $white;
+        }
+        .feather.feather-chevron-down,
+        p {
+          color: lighten($light, 10%);
+        }
+        .feather:not(.feather-chevron-down) {
+          @include prefixes(transition, $transition-base);
+          @include prefixes(animation-name, iconBouncedY);
+          @include prefixes(animation-duration, 1s);
+          @include prefixes(animation-timing-function, cubic-bezier(0.280, 0.840, 0.420, 1));
+        }
+      }
+
+      &.active {
+        *[class*="bg-circle-outline--"] {
+          background-color: $primary;
+          border-color: $primary;
+          box-shadow: 0 0 math.div($spacer, 2) rgba($primary, 0.6);
+        }
+        *[class*="bg-circle-outline--"] .feather {
+          color: $white;
+        }
+        p {
+          color: $primary;
+        }
+        &:hover {
+          *[class*="bg-circle-outline--"] {
+            background-color: lighten($primary, 10%);
+            border-color: lighten($primary, 10%);
+            box-shadow: 0 0 math.div($spacer, 2) rgba(lighten($primary, 10%), 0.6);
+          }
+          p {
+            color: lighten($primary, 10%);
+          }
+        }
+      }
+
+    }
+
+    .list-group {
+      // @include text-truncate();
+      padding-left: $spacer * 4;
+      // @include prefixes(transition, $transition-base);
+      position: relative;
+      &::before {
+        content: '';
+        background-color: lighten($light, 30%);
+        border-radius: $border-radius;
+        width: math.div($spacer, 4);
+        height: 100%;
+        position: absolute;
+        left: $spacer * 3.5;
+        top: 0;
+      }
+
+      .list-group-item {
+        font-size: .9em;
+        color: $light;
+        border: 0;
+        border-radius: 0;
+        padding: math.div($spacer, 2) $spacer;
+        position: relative;
+        &::before {
+          content: '';
+          background-color: $light;
+          border-radius: $border-radius;
+          width: math.div($spacer, 2);
+          height: math.div($spacer, 2);
+          position: absolute;
+          left: -.6rem;
+          top: calc(50% - 0.25rem);
+        }
+        &:hover {
+          color: lighten($light, 10%);
+          .text-light {
+            color: lighten($light, 10%) !important;
+          }
+        }
+
+        &.active {
+          color: $primary;
+          font-weight: 700;
+          .text-light {
+            color: $primary !important;
+          }
+          &::before {
+            background-color: $primary;
+          }
+          &:hover {
+            color: lighten($primary, 10%);
+            .text-light {
+              color: lighten($primary, 10%) !important;
+            }
+          }
+        }
+
+      }
+
+    }
+
+    // .collapsed {
+    //   & + .collapse > .list-group::before {
+    //     content: '';
+    //     background-color: lighten($primary, 40%) !important;
+    //   }
+    // }
+
+    .popover {
+      display: none;
+    }
+
+  }
+
+  hr {
+    width: calc(100% - 4rem);
+    margin: $spacer * 2;
+  }
+
+  .btn-outline-primary {
+    // @include text-truncate();
+    margin: 0 auto;
+    // @include prefixes(transition, $transition-base);
+    // @include prefixes(animation-name, iconBouncedY);
+    // @include prefixes(animation-duration, 1s);
+    // @include prefixes(animation-delay, 4s);
+    // @include prefixes(animation-timing-function, cubic-bezier(0.280, 0.840, 0.420, 1));
+    // @include prefixes(animation-iteration-count, 2);
+    // & > .text-primary {
+    //   margin-right: 0 !important;
+    // }
+  }
+
+}
+
+.header__container.header--collapse + .nav__container {
+  width: $spacer * 6;
+  height: calc(100vh - #{$spacer * 4});
+  flex: 0 0 $spacer * 6;
+  
+  .nav {
+
+    .nav-link {
+      padding-left: 0;
+      padding-right: 0;
+      display: flex;
+      justify-content: center;
+
+      *[class*="bg-circle-outline--"] {
+        margin-right: 0 !important;
+      }
+
+      p {
+        // @include text-truncate();
+      }
+
+      p,
+      .badge,
+      .media-body + .icon--sm {
+        display: none;
+        // @include prefixes(transition, $transition-base);
+      }
+
+    }
+
+    .collapse,
+    .collapsing {
+      display: none !important;
+    }
+
+    .popover {
+      display: block;
+    }
+
+  }
+
+  .btn-outline-primary {
+    font-size: 0;
+    padding: 0.684rem;
+    // @include text-truncate();
+    & > .text-primary {
+      margin-right: 0 !important;
+    }
+  }
+
+}
+
+.header__container:not(.header--collapse) {
+
+  & + .nav__container {
+    .media-body > p,
+    .feather.feather-chevron-down,
+    .badge {
+      @include prefixes(animation-name, opactityOn);
+      @include prefixes(animation-duration, 1s);
+      @include prefixes(animation-timing-function, ease);
+    }
+  }
+
+}
+
+// @include media-breakpoint-down(sm) {
+//   .header__container + .nav__container {
+//     width: 100%;
+//     flex: 0 0 100%;
+
+//     .nav {
+//       width: 100%;
+//       // height: 100%;
+//     }
+
+//     hr {
+//       width: calc(100% - 4rem);
+//       margin: $spacer * 2;
+//     }
+
+//     .btn-outline-primary {
+//       margin-left: auto;
+//       margin-right: auto;
+//     }
+
+//     & + section {
+//       max-height: calc(100vh - 4rem);
+//       padding: 0;
+//       overflow: hidden;
+//     }
+
+//   }
+
+//   .header__container.header--collapse + .nav__container {
+//     display: none;
+
+//     & + section {
+//       max-height: initial;
+//       padding: 0 $spacer;
+//       overflow: visible;
+//     }
+
+//   }
+
+// }
+
+@media screen and (max-height: map-get($grid-breakpoints, sm)) {
+  .nav__container {
+    .nav {
+      overflow: auto;
+    }
+  }
+}
+
+// THEMES
+.dark {
+  .nav__container {
+    .nav {
+      & > .nav-link {
+        color: $light;
+        .icon--sm.text-gray {
+          color: $light !important;
+        }
+      }
+    }
+  }
+}

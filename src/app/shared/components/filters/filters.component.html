@@ -1,0 +1,42 @@
+<div class="modal modal--right" id="ModalFilters" tabindex="-1" role="dialog" aria-labelledby="ModalFilters" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+  
+      <app-modals-frame>
+  
+        <div header class="modal-header">
+          <div class="d-flex flex-column">
+            <h2 class="mb-0">Filtros</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <div body class="modal-body">
+  
+          <div class="row">
+            <div class="col-12">
+              <ng-content></ng-content>
+            </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                  <img src="images/saesaNoResults.svg" alt="Filtrar" class="img-fluid">
+              </div>
+          </div>
+  
+        </div>
+  
+        <div footer class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="search()">
+            Aplicar filtros
+          </button>
+          <button type="button" class="btn btn-outline-gray" data-dismiss="modal" (click)="clear()">
+            Limpiar
+          </button>
+        </div>
+  
+      </app-modals-frame>
+  
+    </div>
+  </div>
+  

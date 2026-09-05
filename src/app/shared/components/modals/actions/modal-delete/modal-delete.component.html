@@ -1,0 +1,28 @@
+<dialog id="{{ idModal }}" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button
+        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        (click)="closeModal()"
+      >
+        ✕
+      </button>
+    </form>
+    <h3 class="text-lg font-bold">{{ modalDeleteTitle }}</h3>
+    <p class="py-4">{{ modalDeleteText }}</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-primary rounded-full text-white">
+          Eliminar
+        </button>
+        <button
+          class="btn btn-outline btn-primary rounded-full text-white ml-2"
+          (click)="closeModal()"
+        >
+          Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+</dialog>

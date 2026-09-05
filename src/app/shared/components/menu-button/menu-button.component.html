@@ -1,0 +1,82 @@
+<!-- <ng-template #popContent >
+  <div class="list-group" >
+    @for (item of button().collapse.items; track $index; let i = $index) {
+      <a
+        [routerLink]="item.link ? [item.link] : []"
+        class="list-group-item"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="!item.link ? '#'+item.modal : '' ">
+        {{item.title}}
+      </a>
+    }
+  </div>
+</ng-template> -->
+
+<div class="w-full" id="sidebar-multi-level-sidebar">
+  <a
+    [routerLink]="button().link ? button().link : null"
+    [routerLinkActive]="['active']"
+    [ngClass]="button().disable ? 'pointer-events-none !text-gray-400' : ''"
+    [attr.aria-disabled]="button().disable ? true : null"
+    tabindex="0"
+    (disable)="button().disable"
+    role="button"
+    class="px-3 nav-link tooltip tooltip-right block text-sm"
+    (click)="openMenu(button().title)"
+    [attr.aria-expanded]="this.isCollapsed"
+    [attr.aria-controls]="
+      button().collapse ? 'dropdown-' + button().title : null
+    "
+    [attr.data-collapse-toggle]="
+      button().collapse ? 'dropdown-' + button().title : null
+    "
+    [id]="'dropdownButton-' + button().title"
+  >
+    <div class="flex items-center media">
+      <div
+        [ngClass]="button().disable ? ' border-gray-400' : 'border-gray-800'"
+        class="m-3 border-solid border  p-2 size-12 rounded-full flex justify-center items-center"
+      >
+        <i-feather
+          name="{{ button().icon }}"
+          [ngClass]="button().disable ? ' text-gray-400' : 'text-gray-800'"
+          class="icon--sm color-contrast-light"
+        ></i-feather>
+      </div>
+      <div class="relative ml-4 text-left media-body font-semibold">
+        <p [ngClass]="button().disable ? ' !text-gray-400' : '!text-gray-600 hover:!text-gray-800'">{{ button().title }}</p>
+      </div>
+      @if (button().collapse) {
+      <i-feather
+        name="chevron-down"
+        class="text-gray-400 icon--sm color-contrast-light"
+      ></i-feather>
+      }
+    </div>
+  </a>
+</div>
+@if (button().collapse) {
+<ul
+  id="dropdown-{{ button().title }}"
+  class="{{
+    !globals.menuCollapsed ? 'py-2 space-y-2 ' : 'p-0'
+  }} !relative !translate-x-0"
+>
+  @for (item of button().collapse.items;track $index; let i = $index) {
+  <li
+    class="px-4 transition duration-75 {{
+      !globals.menuCollapsed ? 'block' : 'hidden'
+    }}"
+  >
+    <a
+      class="flex media-body nav-link items-center w-full text-sm p-2 !text-gray-400 transition duration-75 rounded-lg pl-16 hover:text-gray-400 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+      [routerLink]="item.link"
+      [routerLinkActive]="['active']"
+    >
+      <p>{{ item.title }}</p>
+    </a>
+  </li>
+
+  }
+</ul>
+}

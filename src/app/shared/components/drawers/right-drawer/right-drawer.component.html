@@ -1,0 +1,140 @@
+<!-- drawer component -->
+<div
+  [id]="'drawer-right-example-' + file().filename"
+  class="fixed top-0 right-0 z-40 h-screen px-6 py-[74px] overflow-y-auto transition-transform translate-x-full bg-white w-[440px]"
+  tabindex="-1"
+  aria-labelledby="drawer-right-label"
+>
+  <!--button close start-->
+  <button
+    type="button"
+    data-drawer-hide="drawer-right-example"
+    aria-controls="drawer-right-example"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-6 end-6 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+  >
+    <svg
+      class="w-3 h-3"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+      />
+    </svg>
+    <span class="sr-only">Close menu</span>
+  </button>
+  <!--button close end-->
+  <!--title start-->
+  <h2 class="text-xl !text-gray-800 font-medium mb-10">Detalle del evento</h2>
+  <!--title end-->
+  <!--file's name start-->
+  <div class="flex flex-col mb-4">
+    <p class="!text-gray-900 font-semibold text-sm">Nombre del archivo</p>
+    @if(!file()){
+    <div
+      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"
+    ></div>
+    } @else {
+    <p class="!text-gray-800 font-medium text-sm truncate">
+      {{ file().filename }}
+    </p>
+    }
+    <p></p>
+  </div>
+  <!--file's name end-->
+  <!--company id start-->
+  <div class="flex flex-col mb-4">
+    <p class="!text-gray-900 font-semibold text-sm">CUIT</p>
+    @if(!file()){
+    <div
+      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"
+    ></div>
+    } @else {
+    <p class="!text-gray-800 font-medium text-sm truncate">{{ file().cuit }}</p>
+    }
+    <p></p>
+  </div>
+  <!--company id end-->
+  <!--point of sale number start-->
+  <div class="flex flex-col mb-4">
+    <p class="!text-gray-900 font-semibold text-sm">Nro. punto de venta</p>
+    @if(!file()){
+    <div
+      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"
+    ></div>
+    } @else {
+    <p class="!text-gray-800 font-medium text-sm truncate">{{ file().pos }}</p>
+    }
+    <p></p>
+  </div>
+  <!--point of sale number end-->
+  <!--Table States start-->
+
+  <div
+    class="relative overflow-x-auto rounded-lg [-webkit-box-shadow:_0px_2px_6px_0px_rgba(0,0,0,0.25)] [-moz-box-shadow:_0px_2px_6px_0px_rgba(0,0,0,0.25)] [box-shadow:_0px_2px_6px_0px_rgba(0,0,0,0.25)]"
+  >
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead class="capitalize bg-white border-b border-b-[#808080]">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-gray-800 font-semibold text-sm">
+            Estado
+          </th>
+          <th scope="col" class="px-6 py-3 text-gray-800 font-semibold text-sm">
+            Fecha
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (fileStatus of file().status; track $index ) {
+
+        <tr
+          class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+        >
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            @if(fileStatus.id === 1){
+            <span
+              class="rounded-full px-2 py-0.5 bg-yellow-100 text-xs text-yellow-700 font-medium !h-[19px] !w-[90px] flex justify-center"
+            >
+              Creado
+            </span>
+            } @else if(fileStatus.id === 2){
+            <span
+              class="rounded-full px-2 py-0.5 bg-sky-100 text-xs text-sky-600 font-medium !h-[19px] !w-[90px] flex justify-center"
+            >
+              En la nube
+            </span>
+            } @else if(fileStatus.id === 3){
+            <span
+              class="rounded-full px-2 py-0.5 bg-green-100 text-xs text-green-600 font-medium !h-[19px] !w-[90px] flex justify-center"
+            >
+              Presentado
+            </span>
+            } @else if(fileStatus.id === 99){
+            <span
+              class="rounded-full px-2 py-0.5 bg-red-100 text-xs text-red-600 font-medium !h-[19px] !w-[90px] flex justify-center"
+            >
+              Error
+            </span>
+            }
+          </th>
+          <td class="px-6 py-4 text-gray-800 font-normal">
+            23/09/2024 04:00:00
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <!--Table States end-->
+</div>

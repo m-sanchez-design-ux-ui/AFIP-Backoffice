@@ -1,0 +1,57 @@
+@import "../../themes/themes-module";
+@import "../../abstracts/abstracts-module";
+
+.loading__container {
+  background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop + 15;
+  &.show {
+    opacity: 0.6;
+  }
+
+  svg {
+    width: $spacer * 20; //(16px) x 20 = 320px. La mitad son 160px
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: calc(50% - 25px);
+    //left: calc(50% - 131px);
+    left: calc(50% - 160px);
+    @include prefixes(animation, bounceIn 6s infinite);
+    @include keyframes(bounceIn) {
+      from,
+      20%,
+      40%,
+      60%,
+      80%,
+      to {
+        @include prefixes(
+          animation-timing-function,
+          cubic-bezier(0.2, 0.6, 0.3, 1)
+        );
+      }
+      0%,
+      50%,
+      100% {
+        @include prefixes(transform, scale3d(0.6, 0.6, 0.6) rotate(0deg));
+      }
+      25%,
+      75% {
+        @include prefixes(transform, scale3d(0.8, 0.8, 0.8) rotate(180deg));
+      }
+    }
+  }
+
+  // .loading__isologo {
+  // 	fill: $primary !important;
+  // 	@include prefixes(animation, backgroundIn 5s infinite);
+  // 	@include keyframes(backgroundIn){
+  // 		0%, 50%, 100% {  fill: $white; }
+  // 		25%, 75% { fill: $primary; }
+  // 	}
+  // }
+}

@@ -1,0 +1,32 @@
+{
+  "draw": 1,
+  "recordsTotal": 3,
+  "recordsFiltered": 3,
+  "total": 3,
+  "results" : [
+    {
+      "id": "1",
+      "username": "ahuertas",
+      "name": "Angelica Huertas",
+      "email": "ahuertas@originsw.com",
+      "phone": "12345678",
+      "status": 1
+    },
+    {
+      "id": "2",
+      "username": "ahuertas",
+      "name": "Angelica Huertas",
+      "email": "ahuertas@originsw.com",
+      "phone": "12345678",
+      "status": 2
+    },
+    {
+      "id": "3",
+      "username": "ahuertas",
+      "name": "Angelica Huertas",
+      "email": "ahuertas@originsw.com",
+      "phone": "12345678",
+      "status": 1
+    }
+   ]
+}

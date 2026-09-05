@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@use "sass:math";
+// @import 'bootstrap/scss/bootstrap';
+/*
+____ ____ _ ____ _ _  _    ____ ____ ____ ___ _ _ _ ____ ____ ____
+|  | |__/ | | __ | |\ |    [__  |  | |___  |  | | | |__| |__/ |___
+|__| |  \ | |__] | | \|    ___] |__| |     |  |_|_| |  | |  \ |___
+*/
+
+// 1. Configuration and helpers (Variables, mixins & placeholders)
+@import "scss/abstracts/abstracts-module";
+// 2. Vendors
+// @import "scss/vendors/vendors-module";
+// 3. Base stuff
+@import "scss/base/base-module";
+// 4. Layout-related sections
+@import "scss/layout/layout-module";
+// 5. Components
+@import "scss/components/components-module";
+// 7. Themes
+@import "scss/themes/themes-module";
+

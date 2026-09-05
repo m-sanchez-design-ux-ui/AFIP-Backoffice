@@ -1,0 +1,205 @@
+/* You can add global styles to this file, and also import other style files */
+/*----Import css for tailwind----*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*----Import css for tailwind----*/
+/*----------Weight 100-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Thin.ttf");
+  src: url("../public/fonts/Montserrat-Thin.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 200-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-ExtraLight.ttf");
+  src: url("../public/fonts/Montserrat-ExtraLight.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 300-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Light.ttf");
+  src: url("../public/fonts/Montserrat-Light.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 400-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Regular.ttf");
+  src: url("../public/fonts/Montserrat-Regular.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 500-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Medium.ttf");
+  src: url("../public/fonts/Montserrat-Medium.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 600-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-SemiBold.ttf");
+  src: url("../public/fonts/Montserrat-SemiBold.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 700-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Bold.ttf");
+  src: url("../public/fonts/Montserrat-Bold.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 800-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-ExtraBold.ttf");
+  src: url("../public/fonts/Montserrat-ExtraBold.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Weight 900-----------*/
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Black.ttf");
+  src: url("../public/fonts/Montserrat-Black.ttf") format("truetype");
+  /* You can add more fonts formats here */
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+/*----------Custom Fonts---------*/
+
+.menu li > *:not(ul):not(.menu-title):not(details):active,
+.menu li > *:not(ul, .menu-title, details, .btn).active,
+.menu li > details > summary:active {
+  @apply bg-primary;
+}
+
+/*-----------------------------------STYLES SELECT2 Start----------------------------------------*/
+:root {
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-900: #111827;
+  --blue: #1a56db;
+  --white: #fff;
+  --black: #000;
+}
+
+.select2-container {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.select2-container .select2-selection {
+  border-color: var(--color-gray-300) !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+}
+
+.select2-dropdown.select2-dropdown--below {
+  border: solid 1px var(--color-gray-300) !important;
+  border-radius: 8px !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.select2-search__field {
+  border-radius: 6px !important;
+  border: 1px solid var(--color-gray-300) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.select2-search__field:focus {
+  border: 1px solid var(--color-gray-900) !important;
+}
+
+.select2-selection__rendered {
+  line-height: unset !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.select2-container--default
+  .select2-results__option--highlighted[aria-selected] {
+  background-color: var(--blue) !important;
+  color: var(--white) !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+  color: var(--color-gray-900) !important;
+  background: var(--color-gray-300) !important;
+}
+
+.select2-container--default
+  .select2-results__option[aria-selected="true"]:hover {
+  color: var(--black) !important;
+  background: var(--color-gray-400) !important;
+}
+
+.select2-selection__arrow {
+  margin-right: 6px;
+}
+
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow:before {
+  content: "" !important;
+  border-color: unset !important;
+  border-style: unset !important;
+  border-width: unset !important;
+  display: inline-block !important;
+  width: 11px !important;
+  height: 11px !important;
+  background-image: url("/images/Group-L/chevron-down.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center;
+}
+
+/*-----------------------------------STYLES SELECT2 End----------------------------------------*/
+
+/*-----------------------------------STYLES Datepicker Start----------------------------------------*/
+
+.flatpickr-day.selected {
+  background: #f3cd00 !important;
+  border-color: #f3cd00 !important;
+  color: black !important;
+  font-weight: 600 !important;
+}
+
+.flatpickr-day:hover {
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+}
+/*-----------------------------------STYLES Datepicker End----------------------------------------*/

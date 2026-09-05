@@ -1,0 +1,41 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+@each $color, $value in $theme-colors {
+
+  .alert-#{$color} {
+    color: $white;
+    background-color: $value;
+    border: none;
+    @include prefixes(animation-name, alertsShow);
+    @include prefixes(animation-duration, 1s);
+    max-height: calc(50vh - 90px);
+    width: 95vw;
+  }
+
+}
+
+@include keyframes(alertsShow) {
+  from {
+    margin-top: -1rem;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+// THEMES
+.light .alert,
+.dark .alert {
+  &.alert-warning {
+    color: darken($warning, 30%);
+    .close {
+      color: darken($warning, 30%) !important;
+    }
+  }
+  *[class*="bg-circle--"]:not(*[class*="bg-circle-outline--"]) > *[class*="icon--"].text-warning {
+    color: darken($warning, 30%) !important;
+  }
+}

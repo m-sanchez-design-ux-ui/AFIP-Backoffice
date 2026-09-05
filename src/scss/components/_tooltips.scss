@@ -1,0 +1,78 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+/* TOOLTIP */
+
+.tooltip {
+
+  @include themify() {
+    .tooltip-inner {
+      color: getThemifyVariable('font--color');
+      background-color: getThemifyVariable('components--background');
+      box-shadow: getThemifyVariable('shadow');
+    }
+  }
+
+	// .tooltip-inner {
+
+  //   h6 {
+  //     text-align: left;
+  //     margin-bottom: $spacer / 3 !important;
+  //   }
+
+  //   ul {
+  //     text-align: left;
+  //     margin-bottom: $spacer / 3;
+  //     &:last-child {
+  //       margin-bottom: 0 !important;
+  //     }
+  //   }
+    
+	// }
+
+	@include themify() {
+		&.bs-tooltip-top > .arrow::before {
+			border-top-color: getThemifyVariable('components--background');
+		}
+		&.bs-tooltip-right > .arrow::before {
+			border-right-color: getThemifyVariable('components--background');
+		}
+		&.bs-tooltip-bottom > .arrow::before {
+			border-bottom-color: getThemifyVariable('components--background');
+		}
+		&.bs-tooltip-left > .arrow::before {
+			border-left-color: getThemifyVariable('components--background');
+		}
+	}
+
+}
+
+@each $name, $color in $theme-colors {
+
+  .tooltip--#{$name} {
+    .tooltip-inner {
+      color: $white;
+      background-color: $color;
+      box-shadow: 0 0 math.div($spacer, 2) $color;
+    }
+    &.bs-tooltip-top > .arrow::before {
+      border-top-color: $color;
+    }
+    &.bs-tooltip-right > .arrow::before {
+      border-right-color: $color;
+    }
+    &.bs-tooltip-bottom > .arrow::before {
+      border-bottom-color: $color;
+    }
+    &.bs-tooltip-left > .arrow::before {
+      border-left-color: $color;
+    }
+  }
+
+}
+
+.tooltip--warning {
+  .tooltip-inner {
+    color: darken($warning, 40%);
+  }
+}

@@ -1,0 +1,14 @@
+/// Asset URL builder
+@function assets($type, $file) {
+  @return url('../../../public' + '/' + $type + '/' + $file);
+}
+
+/// Image asset helper
+@function images($file) {
+  @return asset('images', $file);
+}
+
+/// Font asset helper
+@function fonts($file) {
+  @return asset('fonts', $file);
+}

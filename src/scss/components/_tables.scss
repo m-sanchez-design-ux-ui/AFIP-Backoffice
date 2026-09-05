@@ -1,0 +1,550 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.table {
+	white-space: nowrap;
+	width: 100% !important;
+	margin: 0;
+
+	thead {
+		tr {
+			// @include themify() {
+			// 	box-shadow: getThemifyVariable('shadow');
+			// }
+			th {
+				font-size: $font-size-sm;
+				font-weight: $font-weight-bold;
+				vertical-align: middle;
+				background-color: darken($secondary, 30%);
+				padding: $spacer;
+				cursor: pointer;
+				@include themify() {
+					color: getThemifyVariable('font--color');
+					background-color: getThemifyVariable('section--background');
+				}
+				&:hover {
+					@include themify() {
+						color: getThemifyVariable('font--color-hover');
+						background-color: getThemifyVariable('section--background-hover');
+					}
+				}
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			@include themify() {
+				background-color: getThemifyVariable('components--background');
+				/* box-shadow: getThemifyVariable('shadow'); */
+			}
+			/* &:hover {
+				@include themify() {
+					box-shadow: getThemifyVariable('shadow--hover');
+				}	
+			} */
+			td {
+				font-size: $font-size-base;
+				vertical-align: middle;
+				padding: $spacer;
+				@include themify() {
+					color: getThemifyVariable('font--color');
+				}
+			}
+		}
+	}
+
+	tfoot {
+
+		tr {
+			th {
+				font-size: $font-size-sm;
+				font-weight: $font-weight-bold;
+				line-height: 1;
+				vertical-align: middle;
+				background-color: darken($secondary, 30%);
+				padding: $spacer * 1.5 $spacer;
+				@include themify() {
+					color: getThemifyVariable('font--color');
+					background-color: getThemifyVariable('section--background');
+				}
+				h4 {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+}
+
+.table--separate-rows {
+	/* border-collapse: separate; */
+	border-spacing: 0 $spacer;
+
+	.table__checkAll {
+		&:after,
+		&::after {
+			display: none !important;
+		}
+	}
+
+}
+
+// SIZE
+$td-sizes: ();
+$td-sizes: map-merge(
+	(
+		"xs":		$spacer * 4,
+		"sm":		$spacer * 8,
+		"md":		$spacer * 12,
+		"lg":		$spacer * 16,
+		"xl":		$spacer * 20,
+	),
+	$td-sizes
+);
+
+@each $name, $size in $td-sizes {
+	.td--#{$name} {
+		width: $size * 2 !important;
+		min-width: $size !important;
+		max-width: $size * 3.5 !important;
+	}
+}
+
+.td--actions {
+	max-width: max-content !important;
+}
+
+// DATATABLE
+.dataTable {
+	&.responsive > tbody > tr.child{
+		ul li{
+			display: block !important;
+		}
+		span.dtr-title{
+			display: inline !important;
+		}
+	} 
+	&.nowrap th,
+	&.nowrap td{
+		white-space: nowrap;
+	}
+
+	.sorting:after,
+	.sorting_asc:after,
+	.sorting_desc:after,
+	.sorting_disabled:after {
+		vertical-align: middle;
+		display: inline-flex;
+		background-repeat: no-repeat;
+		background-position: center right;
+		width: $spacer * 2;
+		height: $spacer * 2;
+		cursor: pointer;
+	}
+
+	.sorting:after {
+		content: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$light}" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>'), "#", "%23");
+		@include prefixes(transform, rotate(90deg));
+	}
+
+	.sorting_asc:after {
+		content: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$light}" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline stroke="#{$primary}" points="8 6 2 12 8 18"></polyline></svg>'), "#", "%23");
+		@include prefixes(transform, rotate(90deg));
+	}
+
+	.sorting_desc:after {
+		content: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$light}" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline stroke="#{$primary}" points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>'), "#", "%23");
+		@include prefixes(transform, rotate(90deg));
+	}
+
+	.sorting_disabled {
+		cursor: default;
+		&::after {
+			display: none;
+		}
+	}
+
+	// .sorting_1 {
+	// 	background-color: rgba($primary, 0.03);
+	// }
+
+	&.responsive {
+
+		&.dtr-inline.collapsed > tbody {
+
+			> tr {
+				> td.child,
+				> th.child,
+				> td.dataTables_empty {
+					cursor: default !important;
+					&:before {
+						display: none !important;
+					}
+				}
+			}
+
+			> tr > td:first-child,
+			> tr > th:first-child {
+				padding-left: $spacer * 3;
+				position: relative;
+				cursor: pointer;
+				&::before {
+					content: '';
+					@include themify{
+						background: $light str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$white}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>'), "#", "%23") center no-repeat;
+						background-size: math.div($spacer, 2);
+					}
+					border-radius: $spacer;
+					height: $spacer;
+					width: $spacer;
+					position: absolute;
+					top: calc(50% - #{math.div($spacer, 2)});
+					left: $spacer;
+					@include prefixes(transition, $transition-base);
+				}
+				&:hover {
+					&::before {
+						@include themify{
+							background: lighten($light, $theme-color-interval) str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$white}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>'), "#", "%23") center no-repeat;
+							background-size: math.div($spacer, 2);
+						}
+					}
+				}
+			}
+
+			> tr.parent {
+				&:hover {
+					> td:first-child::before,
+					> th:first-child::before {
+						@include themify{
+							background: lighten($light, $theme-color-interval) str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$white}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>'), "#", "%23") center no-repeat;
+							background-size: math.div($spacer, 2);
+						}
+					}
+				}
+				> td:first-child::before,
+				> th:first-child::before {
+					content: '';
+					@include themify{
+						background: $light str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$white}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>'), "#", "%23") center no-repeat;
+						background-size:math.div($spacer, 2);
+					}
+					border-radius: $spacer;
+					height: $spacer;
+					width: $spacer;
+					position: absolute;
+					top: calc(50% - #{math.div($spacer, 2)});
+					left: $spacer;
+					@include prefixes(transition, $transition-base);
+				}
+			}
+
+			> tr.child td::before {
+				display: none;
+			}
+
+		}
+
+		> tbody > tr.child {
+			&:hover {
+				background-color: transparent !important;
+			}
+			td {
+				padding: $spacer $spacer * 3;
+			}
+			ul {
+				list-style-type: none;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				flex-direction: column;
+				li {
+					width: 100%;
+					padding: $spacer 0;
+					display: inline-flex;
+					flex-direction: row;
+					@include themify {
+						border-bottom: getThemifyVariable('border');
+					}
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+			}
+			span.dtr-title {
+				font-size: $font-size-sm;
+				font-weight: $font-weight-bold;
+				white-space: nowrap;
+				min-width: $spacer * 8;
+				margin-right: $spacer;
+				display: flex;
+				align-items: center;
+			}
+		}
+
+	}
+
+	.dtrg-group {
+		@include themify() {
+			background-color: getThemifyVariable('components--background-hover');
+		}
+	}
+
+}
+
+// @include media-breakpoint-down(sm) {
+// 	.dataTable.responsive {
+
+// 		// width: initial !important;
+// 		// &.dtr-inline.collapsed > tbody {
+// 		// 	> tr > td:first-child:not(.sorting_1),
+// 		// 	> tr > th:first-child {
+// 		// 		padding: $spacer;
+// 		// 	}
+// 		// }
+
+// 		> tbody > tr.child {
+// 			padding: 0;
+// 			ul {
+// 				li {
+// 					width: 100%;
+// 					justify-content: space-between;
+// 				}
+// 			}
+// 			td {
+// 				padding: $spacer !important;
+// 			}
+// 			span.dtr-title {
+// 				word-break: break-word;
+// 				white-space: pre-wrap;
+// 				min-width: $spacer * 3 !important;
+// 			}
+// 			span.dtr-data > * {
+// 				width: 100%;
+// 				display: block;
+// 				text-align: right;
+// 				white-space: normal;
+// 			}
+// 		}
+
+// 	}
+// }
+
+.dataTables_wrapper {
+	width: 100%;
+	position: relative;
+	clear: both;
+
+	.dataTables_filter {
+		height: $spacer * 3;
+		border-radius: $border-radius;
+		overflow: hidden;
+		@include themify() {
+			box-shadow: getThemifyVariable('shadow');
+		}
+		& > label {
+			display: flex;
+			justify-content: flex-start;
+			position: relative;
+
+			*[class*="icon--"] {
+				border-top-left-radius: $border-radius;
+				border-bottom-left-radius: $border-radius;
+				margin-right: $spacer * 0.5;
+			}
+			input[type="search"] {
+				line-height: 1.5;
+				background-color: transparent;
+				border: 0;
+				width: 100%;
+				padding-left: $spacer;
+				padding-right: $spacer * 2.5;
+				-webkit-appearance: none;
+				outline-offset: 0;
+				@include themify() {
+					color: getThemifyVariable('font--color');
+				}
+			}
+		}
+	}
+
+	.dataTables_length {
+		position: relative;
+		background: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"/></svg>'), "#", "%23") no-repeat;
+		background-size: $spacer * 1.5;
+		background-position: right $spacer center;
+		select {
+			line-height: 1.5;
+			background-color: transparent;
+			border: 0;
+			width: 6rem;
+			height: $spacer * 3;
+			padding: 0 $spacer * 2.5 0 $spacer;
+			cursor: pointer;
+			@include themify() {
+				color: getThemifyVariable('font--color');
+				border-left: getThemifyVariable('border');
+				border-right: getThemifyVariable('border');
+			}
+			option {
+				border: 0;
+				@include themify() {
+					color: getThemifyVariable('font--color');
+					background-color: getThemifyVariable('section--background');
+				}
+			}
+		}
+	}
+
+	.dataTables_info {
+		background-color: transparent;
+		height: $spacer * 3;
+		padding: 0 $spacer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		@include themify() {
+			color: getThemifyVariable('font--color');
+			border-left: getThemifyVariable('border');
+			border-right: getThemifyVariable('border');
+		}
+		&:after {
+			content: "";
+			background-color: $primary;
+			width: 100%;
+			height: 1px;
+			display: flex;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+	}
+
+	.dataTables_paginate {
+		height: $spacer * 3;
+		padding: 0 $spacer;
+		display: flex;
+		@include themify() {
+			border-left: getThemifyVariable('border');
+			border-right: getThemifyVariable('border');
+		}
+
+		.paginate_button.first,
+		.paginate_button.previous,
+		.paginate_button.next,
+		.paginate_button.last {
+			border-radius: 50%;
+			width: $spacer * 3;
+			height: $spacer * 3;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			&:hover {
+				@include themify() {
+					background-color: getThemifyVariable('components--background-hover');
+				}
+			}
+			&.disabled {
+				opacity: $disabled-opacity;
+				&:hover {
+					@include themify() {
+						color: getThemifyVariable('font--color') !important;
+					}
+					background-color: transparent;
+					cursor: default;
+				}
+			}
+		}
+
+		& > span {
+			display: flex;
+			align-items: center;
+			a {
+				text-align: center;
+				border-radius: 50%;
+				min-width: $spacer * 3;
+				height: $spacer * 3;
+				padding: math.div($spacer, 6);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				@include prefixes(transition, $transition-base);
+				cursor: pointer;
+				@include themify() {
+					color: getThemifyVariable('font--color');
+				}
+				&:hover {
+					@include themify() {
+						color: getThemifyVariable('font--color-hover');
+						background-color: getThemifyVariable('components--background-hover');
+					}
+				}
+				&:active,
+				&.current {
+					color: $white;
+					background-color: $primary;
+					box-shadow: 0 0 math.div($spacer, 2) $primary;
+					cursor: pointer;
+					&:hover {
+						color: $white !important;
+						background-color: $primary;
+					}
+				}
+			}
+			.ellipsis {
+				font-size: $font-size-lg;
+				margin: 0 math.div($spacer, 3);
+				@include themify() {
+					color: getThemifyVariable('font--color-hover');
+				}
+			}
+
+		}
+
+	}
+
+	.dataTables_empty {
+		color: $primary !important;
+		padding: $spacer * 2;
+	}
+
+	.dataTables_processing {
+		color: $white;
+		background-color: $secondary;
+		border-radius: $border-radius;
+		padding: $spacer;
+	}
+
+}
+
+// @include media-breakpoint-down(xs) {
+
+// 	.dataTables_paginate {
+// 		border-width: 0 !important;
+// 		padding: 0 !important;
+// 		margin-top: $spacer;
+
+// 		& > span {
+// 			font-size: $small-font-size;
+// 			a {
+// 				min-width: $spacer * 2 !important;
+// 				height: $spacer * 2 !important;
+// 			}
+// 		}
+// 		.ellipsis {
+// 			display: none;
+// 		}
+
+// 	}
+
+// 	.dataTables_empty img {
+// 		width: 100%;
+// 	}
+
+// }

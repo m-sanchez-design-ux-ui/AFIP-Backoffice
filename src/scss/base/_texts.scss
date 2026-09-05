@@ -1,0 +1,147 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: $font-size-base-px;
+  // @include media-breakpoint-up(rt) {
+  //   font-size: $font-size-base*1.1;
+  // }
+  // @include media-breakpoint-up(rt15) {
+  //   font-size: $font-size-base*1.1;
+  // }
+  // @include media-breakpoint-up(uhd) {
+  //   font-size: $font-size-base*1.2;
+  // }
+  // @include media-breakpoint-up(4k) {
+  //   font-size: $font-size-base*1.2;
+  // }
+  // @include media-breakpoint-up(8k) {
+  //   font-size: $font-size-base*1.3;
+  // }
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: $font-family-base;
+}
+
+body {
+  color: $body-color;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small,
+a {
+  @include themify() {
+    color: getThemifyVariable("font--color");
+  }
+}
+
+h5,
+h6 {
+  text-transform: uppercase;
+  margin-bottom: math.div($spacer, 2);
+}
+
+a {
+  @include themify() {
+    color: getThemifyVariable("font--color");
+  }
+  text-decoration: none;
+  position: relative;
+  @include prefixes(transition, $transition-base);
+  &:hover {
+    @include themify() {
+      color: getThemifyVariable("font--color-hover");
+    }
+    text-decoration: none;
+  }
+}
+
+// @each $color, $value in $theme-colors {
+//   .text-#{$color} {
+//     color: $value;
+//   }
+//   a.text-#{$color},
+//   button.text-#{$color} {
+//     @include prefixes(transition, $transition-base);
+//     cursor: pointer;
+//     // &:hover {
+//     //   color: lighten($value, 10%) !important;
+//     // }
+//   }
+//   a.text-#{$color}:not(.btn) {
+//     &::after,
+//     &:after {
+//       content: "";
+//       display: block;
+//       width: 0%;
+//       position: absolute;
+//       top: $spacer;
+//       bottom: 0;
+//       left: 0;
+//       border-bottom: 1px solid $value;
+//       transition: width 0.3s ease;
+//     }
+//     &:hover {
+//       &::after,
+//       &:after {
+//         content: "";
+//         display: block;
+//         width: 100%;
+//         position: absolute;
+//         top: $spacer;
+//         bottom: 0;
+//         left: 0;
+//         border-bottom: 1px solid lighten($value, 10%);
+//         transition: width 0.3s ease;
+//       }
+//     }
+//   }
+// }
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+strong {
+  font-weight: $font-weight-bold;
+}
+
+// Horizontal rules
+hr {
+  background-color: transparent;
+  width: 100%;
+  margin: $spacer * 2 0;
+  @include themify() {
+    border-top: getThemifyVariable("divider");
+  }
+}
+
+.hr--vertical {
+  border: none;
+  width: 1px;
+  min-height: $spacer * 2;
+  height: 100%;
+  @include themify() {
+    border-left: getThemifyVariable("divider");
+  }
+}

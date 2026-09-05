@@ -1,0 +1,233 @@
+.dataTables_wrapper,
+.dt-container {
+  .datatable__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //margin-bottom: $spacer;
+
+    label {
+      input {
+        width: 100%;
+        border-radius: $input-border-radius;
+        min-height: $spacer * 2.5;
+        border: solid 1px $gray-300;
+        padding-left: 10px;
+        /* background: url('../../assets/images/search.svg') no-repeat; */
+        background-position: 150px 5px;
+      }
+
+      input:hover {
+        box-shadow: $box-shadow;
+      }
+
+      input:focus {
+        border: solid 1px $primary;
+        background: none;
+      }
+
+      @media (min-width: 2560px) {
+        input {
+          background-position: 200px 7px;
+        }
+      }
+    }
+
+    .dataTables_info,
+    .dt-info {
+      padding: 0 $spacer;
+    }
+
+    .dataTables_length,
+    .dt-length {
+      font-size: $font-size-base;
+      height: 2.5rem;
+      border-radius: 0.4rem;
+      position: absolute;
+      z-index: 50;
+      top: -65px;
+      right: 0;
+      background: white;
+
+      &::after {
+        position: absolute;
+        content: "Cant. de registros";
+        display: inline-block;
+        white-space: nowrap;
+        left: -140px;
+        top: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+
+      select {
+        background: url("../../../public/images/chevron-down.svg") no-repeat;
+        background-position: 50px 7px;
+        width: 78px;
+        min-height: 2.5rem;
+        border: none;
+        padding: 0 10px;
+        background-color: none;
+        border-radius: 0.4rem;
+        border: solid 1px $gray-300;
+      }
+
+      select:hover {
+        box-shadow: $box-shadow;
+      }
+
+      select:focus {
+        border: solid 1px $gray-500;
+      }
+    }
+
+    .dataTables_filter,
+    .dt-search {
+      label {
+        margin-bottom: 0;
+      }
+      input {
+        margin-left: 0;
+      }
+      + div {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .datatable__body {
+    background-color: none;
+    div.dt-processing {
+      padding: calc($spacer / 4);
+    }
+    table {
+      max-width: 2560px !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      overflow-y: auto !important;
+      border-bottom: none !important;
+      thead {
+        tr {
+          th:first-child {
+            border-top-left-radius: 8px;
+            &:hover {
+              border-top-left-radius: 6px;
+            }
+          }
+          th:last-child {
+            border-top-right-radius: 8px;
+            // &:hover {
+            //   border-top-right-radius: 6px;
+            // }
+            text-align: left;
+          }
+          th {
+            background-color: $white;
+            color: $gray-800-tailwind !important;
+            //color: $black;
+            //border-bottom: solid 1px $secondary;
+            border-bottom: solid 1px $gray-500;
+            padding: $spacer;
+            text-align: left;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            //line-height: normal;
+            text-align: left;
+            padding: calc($spacer / 1.2) $spacer calc($spacer / 1.2) $spacer;
+            vertical-align: middle;
+            color: $gray-800-tailwind !important;
+            &__buttons {
+              display: flex;
+              flex-wrap: nowrap;
+            }
+          }
+          td:last-child {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  .datatable__footer {
+    background-color: none !important;
+    .dataTables_paginate,
+    .dt-paging nav {
+      width: 100%;
+      margin-top: $spacer;
+      margin-bottom: $spacer;
+      height: $spacer * 3;
+      padding: 0 $spacer;
+      display: flex;
+      background: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        background-color: none;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .paginate_button,
+      .dt-paging-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $spacer * 2;
+        height: $spacer * 2;
+        border-radius: 50%;
+        border: solid 0px $secondary;
+        box-shadow: none;
+        margin-left: calc($spacer / 3);
+        margin-right: calc($spacer / 3);
+        font-weight: 500;
+        background: $white;
+        padding: 0.5em 0em;
+
+        &:hover {
+          border: none !important;
+          background: $secondary;
+          color: $gray-800-tailwind !important;
+        }
+
+        &.current {
+          border: solid 0px $secondary;
+          background: $primary;
+          color: $gray-800-tailwind !important;
+          &:hover {
+            background: $secondary;
+            color: $gray-800-tailwind !important;
+          }
+        }
+
+        &.previous,
+        &.next {
+          &:hover {
+            background: $secondary;
+          }
+          &.disabled,
+          &.disabled:hover {
+            border: none;
+            background: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+div.dt-processing > div:last-child > div {
+  background-color: $gray-800-tailwind;
+}

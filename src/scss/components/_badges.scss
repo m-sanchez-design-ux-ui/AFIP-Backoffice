@@ -1,0 +1,77 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+.badge {
+  display: inline-flex;
+
+  &.badge-pill {
+    line-height: 1.5;
+    padding: 0.4rem $spacer;
+  }
+
+  a.text-dark {
+    &:hover {
+      &::after,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+}
+
+// Badge Pills
+@each $color, $value in $theme-colors {
+
+  .badge.badge-#{$color} {
+    color: $white;
+  }
+
+  .badge-pill.badge-#{$color} {
+    color: $value;
+    background-color: transparent;
+    border: 1px solid $value;
+  }
+
+}
+
+.badge-warning {
+  color: darken($warning, 40%) !important;
+}
+
+.badge-orange {
+  background-color: $orange !important;
+}
+
+// Badge Notifications
+*[class*="badge__notif--"] {
+  position: relative;
+  &::after {
+    content: '';
+    width: $spacer * 1.25;
+    height: $spacer * 1.25;
+    border-radius: 50%;
+    position: absolute;
+    top: - math.div($spacer, 3);
+    right: - math.div($spacer, 3);
+  }
+  small {
+    color: $white;
+    text-align: center;
+    width: $spacer * 1.25;
+    height: $spacer * 1.25;
+    position: absolute;
+    top: -4px;
+    right: -5px;
+    z-index: 100;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .badge__notif--#{$color} {
+    &::after,
+    &:after {
+      background-color: $value;
+    }
+  }
+}

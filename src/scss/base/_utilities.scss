@@ -1,0 +1,131 @@
+@import "../themes/themes-module";
+@import "../abstracts/abstracts-module";
+
+@each $color, $value in $theme-colors {
+  .bg-opacity--#{$color} {
+    @include themify() {
+      background-color: rgba($value, 0.05) !important;
+    }
+  }
+  .bg-circle--#{$color} {
+    @include themify() {
+      background-color: $value;
+    }
+		border-radius: 50%;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+  }
+  .bg-circle-outline--#{$color} {
+    border: 1px solid $value;
+		border-radius: 50%;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+  }
+}
+
+.bg-circle--white {
+  background-color: rgba($white, 0.2);
+}
+
+$bg-circle--size: (
+  "sm":     $spacer * 2,
+  "md":     $spacer * 3,
+  "lg":     $spacer * 4,
+  "xl":     $spacer * 7,
+);
+
+@each $name, $size in $bg-circle--size {
+  .bg-circle--#{$name} {
+    width: $size !important;
+    height: $size !important;
+  }
+}
+.media-body{
+  flex: 1;
+  -webkit-box-flex: 1;
+}
+*[class*="bg-circle--"] {
+  position: relative;
+
+  .badge {
+    position: absolute;
+    top: 4px;
+    right: -4px;
+  }
+
+  &.bg-circle--xl ~ .media-body {
+    // @include themify() {
+    //   box-shadow: getThemifyVariable('shadow');
+    // }
+    border-radius: $border-radius;
+    padding: 2rem;
+    margin-left: -2rem;
+
+    &:hover {
+      cursor: pointer;
+      // @include themify() {
+      //   box-shadow: getThemifyVariable('shadow--hover');
+      // }
+    }
+  }
+
+}
+
+// Quick Access
+@each $color, $value in $theme-colors {
+	.quick--#{$color} {
+    color: $value;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: $border-radius;
+    @include prefixes(transition, $transition-base);
+    @include themify() {
+      background-color: rgba($value, getThemifyVariable('opacity'));
+    }
+    &:hover {
+      color: lighten($value, 10%);
+      @include themify() {
+        background-color: rgba($value, getThemifyVariable('opacity--hover'));
+      }
+    }
+  }
+}
+
+// justify buttons
+.justify-content-start .btn {
+  margin-right: $spacer;
+  margin-bottom: $spacer;
+}
+
+.justify-content-center .btn {
+  margin: 0 math.div($spacer, 2);
+  margin-bottom: $spacer;
+}
+
+.justify-content-end .btn {
+  margin-left: $spacer;
+  margin-bottom: $spacer;
+}
+
+// Pointer
+.cursor-pointer {
+  cursor: pointer;
+}
+
+// Collapse
+.collapsing {
+  @include prefixes(transition, $transition-collapse);
+}
+
+// THEMES
+.dark {
+  *[class*="quick--"] {
+    color: $white;
+  }
+}

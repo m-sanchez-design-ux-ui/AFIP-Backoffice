@@ -1,0 +1,28 @@
+:root {
+  --white:                        #ffffff;
+  --black:                        #000000;
+  --gray:                         #666666;
+  --gray-dark:                    #333333;
+  --gray-light:                   #CCCCCC;
+  --primary:                      #ff6d00;
+  --secondary:                    #1f5b9e;
+  --success:                      #47CCAB;
+  --info:                         #337de6;
+  --warning:                      #ffc61a;
+  --danger:                       #e62e3d;
+  --breakpoint-xs:                0;
+  --breakpoint-sm:                576px;
+  --breakpoint-md:                768px;
+  --breakpoint-lg:                992px;
+  --breakpoint-xl:                1200px;
+  --breakpoint-xxl:               1366px;
+  --breakpoint-fhd:               1920px;
+  --breakpoint-rt:                2560px;
+  --breakpoint-rt15:              2880px;
+  --breakpoint-uhd:               3840px;
+  --breakpoint-4k:                4096px;
+  --breakpoint-8k:                8192px;
+  --font-family-sans-serif:       -apple-system, BlinkMacSystemFont, 'Opens Sans', 'Helvetica Neue', 'Roboto', sans-serif;
+  --font-family-monospace:        'Monaco', 'Consolas', 'Lucida Console', monospace;
+  --saesa-version-number:         '1.0.0.0';
+}

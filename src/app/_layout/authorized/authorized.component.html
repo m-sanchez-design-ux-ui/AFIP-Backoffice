@@ -1,0 +1,160 @@
+<div
+  class="toast__container !w-full max-w-md md:max-w-2xl z-10 flex flex-row-reverse"
+>
+  <app-notifications></app-notifications>
+</div>
+
+<main class="" [class]="this.configService.getTheme()">
+  <header
+    class="header__container sticky-top z-[60]"
+    [class]="this.globals.menuCollapsed ? 'header--collapse' : ''"
+  >
+    <nav aria-label="navBar" class="flex justify-between items-center navbar">
+      <a class="navbar-brand order-md-1" routerLink="/dashboard">
+        <span class="sr-only">Dashboard</span>
+      </a>
+
+      <button
+        type="button"
+        (click)="this.onBtnMenuClick()"
+        class="btn order-lg-2 me-0 me-sm-1 mr-auto"
+      >
+        <i-feather name="menu" class="!hidden !sm:block text-white"></i-feather>
+        <i-feather
+          name="chevrons-left"
+          class="!lg:block !sm:hidden text-gray-800"
+        ></i-feather>
+      </button>
+
+      <div class="flex justify-center items-center order-4">
+        <button
+          class="btn animation-pulse--danger"
+          type="button"
+          data-drawer-target="drawer-example"
+          data-drawer-placement="right"
+          data-drawer-show="drawer-example"
+          aria-controls="drawer-example"
+        >
+          <span
+            [class]="
+              this.notifLength > 0
+                ? 'badge__notif--danger position-relative'
+                : ''
+            "
+          >
+            <i-feather
+              name="bell"
+              class="mt-1 text-gray-800 icon--sm"
+            ></i-feather>
+            @if (notifLength > 0) {
+            <small>{{ this.notifLength }}</small>
+            }
+          </span>
+          <span class="animation-pulse" style="top: 0px; right: 0px"></span>
+        </button>
+        <div class="dropdown dropdown-end">
+          <button
+            data-popover-target="popover-default2"
+            type="button"
+            class="m-1 btn"
+          >
+            <i-feather name="user" class="text-gray-800 icon--sm"></i-feather>
+          </button>
+          <div
+            data-popover
+            id="popover-default2"
+            role="tooltip"
+            class="dropdown-content absolute z-20 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+          >
+            <div class="mb-1 bg-primary px-2 py-3">
+              <div class="flex items-center media">
+                <div class="btn bg-circle--md me-3">
+                  <i-feather
+                    name="user"
+                    class="text-gray-800 icon--sm"
+                  ></i-feather>
+                </div>
+                <div class="media-body text-truncate">
+                  <small class="!text-gray-800 text-uppercase font-semibold">{{
+                    this.activeUser.role
+                  }}</small>
+                  <h5 class="mb-0 text-capitalize !text-gray-800 font-semibold">
+                    {{ this.activeUser.name }}
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <!-- Buton Logout Start -->
+            <div
+              class="dropdown-item p-2 cursor-pointer"
+              (click)="onLogout()"
+              (keydown)="onLogout()"
+              routerLink="/signin"
+            >
+              <div class="flex items-center media">
+                <div
+                  class="bg-red-100 rounded-full flex justify-center items-center bg-circle--sm mr-3"
+                >
+                  <i-feather
+                    name="log-in"
+                    class="icon--xs text-red-600"
+                  ></i-feather>
+                </div>
+                <div class="media-body">
+                  <p class="mb-0">Cerrar sesión</p>
+                </div>
+                <i-feather
+                  name="chevron-right"
+                  class="con--xs text-gray-400 ml-3"
+                ></i-feather>
+              </div>
+            </div>
+            <!-- Buton Logout End -->
+            <!-- Buton Origin Start -->
+            <div class="p-2">
+              <div class="flex justify-center gap-2 py-3">
+                <span class="text-sm text-center">Powered by </span>
+                <img
+                  src="/images/logo_origin.svg"
+                  alt="Logo Origin"
+                  class="w-16 h-auto"
+                />
+              </div>
+            </div>
+            <!-- Buton Origin End -->
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="nav__container sticky z-10">
+    <nav aria-label="navBar" class="w-full nav">
+      @for (button of buttons; track $index; let i = $index, isFirst = $first )
+      {
+      <div class="w-100">
+        <app-menu-button [button]="button"></app-menu-button>
+      </div>
+
+      }
+      <div
+        class="text-center w-full absolute"
+        style="position: absolute; bottom: 22px"
+      >
+        <p class="m-0 p-0 text-[12px]" style="color: gray">Powered by</p>
+        <img
+          alt="logo_origin"
+          src="images/logo_origin.svg"
+          style="width: 60px"
+          class="m-auto"
+        />
+      </div>
+    </nav>
+  </div>
+
+  <section class="w-full px-4 !bg-background-whitesmoke">
+    <router-outlet></router-outlet>
+  </section>
+
+  <app-modal-notifications></app-modal-notifications>
+</main>

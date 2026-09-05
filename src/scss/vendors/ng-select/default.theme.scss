@@ -1,0 +1,369 @@
+@import "../../themes/themes-module";
+@import "../../abstracts/abstracts-module";
+
+$ng-select-highlight: $primary !default;
+$ng-select-primary-text: $body-color !default;
+$ng-select-disabled-text: $disabled !default;
+$ng-select-border: #ccc !default;
+$ng-select-bg: #ffffff !default;
+$ng-select-selected: rgba($primary, 0.1);
+$ng-select-marked: rgba($primary, 0.2);
+
+.ng-select {
+
+  .ng-arrow-wrapper {
+    width: $spacer * 2;
+    height: $spacer * 2.5 !important;
+    .ng-arrow {
+      background: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>'), "#", "%23") no-repeat;
+      background-size: $spacer * 1.5;
+      background-position: left center;
+      width: $spacer * 2 !important;
+      height: $spacer * 2.5 !important;
+      @include prefixes(transition, $transition-base);
+    }
+    &:hover {
+      .ng-arrow {
+        background: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{lighten($light, $theme-color-interval)}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>'), "#", "%23") no-repeat;
+        background-size: $spacer * 1.5;
+        background-position: left center;
+        width: $spacer * 2 !important;
+        height: $spacer * 2.5 !important;
+      }
+    }
+  }
+
+  &.ng-select-opened {
+
+    > .ng-select-container {
+      background-color: transparent;
+      @include themify() {
+        color: getThemifyVariable('font--color');
+        border-color: getThemifyVariable('border');
+      }
+      &:hover {
+        box-shadow: none;
+      }
+      .ng-arrow-wrapper {
+        .ng-arrow {
+          background-position: left  math.div($spacer, 2) center;
+          @include prefixes(transition, $transition-base);
+          @include prefixes(transform, rotate(180deg));
+        }
+        &:hover {
+          .ng-arrow {
+            background: str-replace(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{lighten($light, $theme-color-interval)}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>'), "#", "%23") no-repeat;
+            background-position: left  math.div($spacer, 2) center;
+          }
+        }
+      }
+    }
+
+    &.ng-select-bottom {
+      > .ng-select-container {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &.ng-select-top {
+      > .ng-select-container {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+  }
+
+  &.ng-select-focused {
+    &:not(.ng-select-opened) > .ng-select-container {
+      border: 1px solid $primary !important;
+      @include themify() {
+        box-shadow: getThemifyVariable('shadow');
+      }
+    }
+  }
+
+  &.ng-select-disabled {
+    > .ng-select-container {
+      @include themify() {
+        background-color: getThemifyVariable('section--background');
+      }
+      &:hover {
+				box-shadow: none !important;
+			}
+    }
+  }
+
+  .ng-has-value .ng-placeholder {
+    display: none;
+  }
+
+  .ng-select-container {
+    background-color: transparent;
+    border-radius: $border-radius;
+    min-height: $spacer * 2.5;
+    align-items: center;
+    @include themify() {
+      color: getThemifyVariable('font--color');
+      border: getThemifyVariable('border');
+    }
+    &:hover {
+      @include themify() {
+        box-shadow: getThemifyVariable('shadow');
+      }
+    }
+
+    .ng-value-container {
+      align-items: center;
+      padding-left:  math.div($spacer, 2);
+      .ng-placeholder {
+        @include themify() {
+          color: getThemifyVariable('font--color-hover');
+        }
+      }
+      .ng-input > input {
+        @include themify() {
+          color: getThemifyVariable('font--color');
+        }
+      }
+    }
+
+  }
+
+  &.ng-select-single {
+    .ng-select-container {
+      height: $spacer * 2.5;
+
+      .ng-value-container {
+        .ng-input {
+          top: 5px;
+          left: 0;
+          padding-left:  math.div($spacer, 2);
+          padding-right: $spacer * 4;
+        }
+      }
+    }
+  }
+
+  &.ng-select-multiple {
+
+    &.ng-select-disabled {
+      > .ng-select-container .ng-value-container .ng-value {
+        @include themify() {
+          background-color: getThemifyVariable('section--background');
+          border: getThemifyVariable('border');
+        }
+        .ng-value-label {
+          padding: 0  math.div($spacer, 2);
+        }
+      }
+    }
+
+    .ng-select-container {
+      .ng-value-container {
+        padding-top:  math.div($spacer, 4);
+        padding-left:  math.div($spacer, 2);
+
+        .ng-value {
+          background-color: $primary;
+          font-size: $font-size-sm;
+          margin-bottom:  math.div($spacer, 4);
+          border-radius: $border-radius-lg;
+          margin-right:  math.div($spacer, 4);
+          padding: 0 math.div($spacer*3, 4);
+          &.ng-value-disabled {
+            opacity: $disabled-opacity;
+          }
+          .ng-value-label {
+            color: $white;
+            line-height: 1;
+            padding:  math.div($spacer, 4)  math.div($spacer, 2);
+            display: inline-flex;
+          }
+          .ng-value-icon {
+            font-weight: $font-weight-bold;
+            background-color: transparent;
+            padding:  math.div($spacer, 5)  math.div($spacer, 2)  math.div($spacer, 5) 0;
+            display: inline-block;
+            color: $white;
+            &:hover {
+              @include themify() {
+                color: $gray-100;
+              }
+            }
+            &.left {
+              border-right: none;
+            }
+            &.right {
+              border-left: none;
+            }
+          }
+        }
+
+        .ng-input {
+          padding: 0 0  math.div($spacer, 2) 0;
+        }
+
+        .ng-placeholder {
+          display: none !important;
+        }
+
+      }
+
+    }
+  }
+
+  .ng-clear-wrapper {
+    color: $danger;
+    &:hover .ng-clear {
+      color: lighten($danger, 10%);
+      text-shadow: 0 0  math.div($spacer, 2) lighten($danger, 10%);
+    }
+  }
+
+  .ng-spinner-zone {
+    padding:  math.div($spacer, 5)  math.div($spacer, 5) 0 0;
+  }
+
+}
+
+.ng-dropdown-panel {
+  border: 1px solid $primary;
+  left: 0;
+  z-index: $zindex-dropdown;
+  @include themify() {
+    background-color: getThemifyVariable('components--background');
+    box-shadow: getThemifyVariable('shadow');
+  }
+
+  &.ng-select-bottom {
+    top: 100%;
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    margin-top: -1px;
+    @include themify() {
+      border-top-color: getThemifyVariable('border');
+    }
+
+    .ng-dropdown-panel-items {
+      .ng-option {
+        &:last-child {
+          border-bottom-right-radius: $border-radius;
+          border-bottom-left-radius: $border-radius;
+        }
+      }
+    }
+  }
+
+  &.ng-select-top {
+    bottom: 100%;
+    border-top-right-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+    margin-bottom: -1px;
+    @include themify() {
+      border-bottom-color: getThemifyVariable('border');
+    }
+    .ng-dropdown-panel-items {
+      .ng-option {
+        &:first-child {
+          border-top-right-radius: $border-radius;
+          border-top-left-radius: $border-radius;
+        }
+      }
+    }
+  }
+
+  .ng-dropdown-header {
+    padding: $spacer 0;
+    margin: 0 $spacer;
+    @include themify() {
+      border-bottom: getThemifyVariable('divider');
+    }
+  }
+
+  .ng-dropdown-footer {
+    padding: $spacer 0;
+    margin: 0 $spacer;
+    @include themify() {
+      border-top: getThemifyVariable('divider');
+    }
+  }
+
+  .ng-dropdown-panel-items {
+    max-height: $spacer * 18;
+    margin-bottom: 0;
+
+    .ng-optgroup {
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      padding:  math.div($spacer, 2) $spacer;
+      cursor: pointer;
+      user-select: none;
+      @include themify() {
+        color: getThemifyVariable('font--color-hover');
+      }
+      &:hover {
+        @include themify() {
+          color: getThemifyVariable('font--color');
+        }
+      }
+      &.ng-option-disabled {
+        cursor: default;
+      }
+      &.ng-option-marked {
+        @include themify() {
+          background-color: getThemifyVariable('components--background-hover');
+        }
+        // background-color: $ng-select-marked;
+      }
+      &.ng-option-selected,
+      &.ng-option-selected.ng-option-marked {
+        background-color: $ng-select-selected;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .ng-option {
+      padding:  math.div($spacer, 2) $spacer;
+      @include themify() {
+        color: getThemifyVariable('font--color-hover');
+        background-color: getThemifyVariable('components--background');
+      }
+
+      &.ng-option-selected,
+      &.ng-option-selected.ng-option-marked {
+        @include themify() {
+          color: getThemifyVariable('font--color');
+        }
+        background-color: $ng-select-selected;
+        .ng-option-label {
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      &.ng-option-marked {
+        // background-color: $ng-select-marked;
+        @include themify() {
+          color: getThemifyVariable('font--color-hover');
+          background-color: getThemifyVariable('components--background-hover');
+        }
+      }
+
+      &.ng-option-disabled {
+        color: $disabled;
+      }
+
+      &.ng-option-child {
+        padding-left: $spacer * 2;
+      }
+
+      .ng-tag-label {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+      }
+
+    }
+  }
+
+}

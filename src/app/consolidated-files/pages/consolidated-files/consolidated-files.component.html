@@ -1,0 +1,31 @@
+<div class="container mx-auto p-6">
+  <div class="!m-0">
+    <div class="row flex items-center justify-between">
+      <div class="col-md-12 col-lg-6 inline-block">
+        <app-breadcrumb [breadcrumItems]="this.breadcrumb"></app-breadcrumb>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <app-data-table-fliter-02
+      [statusList]="statusList"
+      (filterEmmiter)="saveFilters($event)"
+    ></app-data-table-fliter-02>
+  </div>
+
+  <h2 class="text-xl !text-gray-800 font-medium my-8">
+    Listado de archivos consolidados
+  </h2>
+
+  <!--Data table start-->
+  <div>
+    <app-data-table
+      [titlesList]="titlesList"
+      [dtOptions]="dtOptions"
+    ></app-data-table>
+    <div>
+      <!--Data table end-->
+    </div>
+  </div>
+</div>

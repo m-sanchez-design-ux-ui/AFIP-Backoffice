@@ -1,0 +1,33 @@
+<!-- <ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title">{{modalSaveTitle()}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+    </button>
+  </div>
+  <div class="modal-body text-center">
+      <p class="mb-0">{{modalSaveText()}}</p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-sm btn-primary" (click)="saveChanges()">Guardar</button>
+      <button type="button" class="btn btn-sm btn-outline-primary" (click)="modal.close('Close click')">Cancelar</button>
+  </div>
+</ng-template> -->
+
+<dialog id={{idModal}} class="modal">
+  <div class="modal-box">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" (click)="closeModal()">✕</button>
+      </form>
+      <h3 class="text-lg font-bold">{{modalSaveTitle}}</h3>
+      <p class="py-4">{{modalSaveText}}</p>
+      <div class="modal-action">
+          <form method="dialog flex gap-4">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn btn-primary rounded-full text-white" >Guardar</button>
+              <button class="btn btn-outline btn-primary rounded-full text-white ml-2" (click)="closeModal()">Cancelar</button>
+          </form>
+      </div>
+  </div>
+</dialog>
+

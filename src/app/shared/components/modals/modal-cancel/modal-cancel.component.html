@@ -1,0 +1,19 @@
+<div class="modal fade" id="ModalCancel" tabindex="-1" role="dialog" aria-labelledby="ModalCancelTitle" aria-hidden="true">
+  <div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+
+      <app-modals-frame>
+          <div body class="modal-body justify-content-center">
+              <div class="bg-circle--primary bg-circle--lg bg-opacity--primary d-flex mx-auto mb-3">
+                  <i-feather name="bell" class="icon--sm text-primary"></i-feather>
+              </div>
+              <h1>Cancelar</h1>
+              <p>Los datos ingresados se perderán, ¿Confirma que desea cancelar?</p>
+          </div>
+          <div footer class="modal-footer d-flex justify-content-center">
+              <button type="button" class="btn btn-primary" (click)="onCancel()" >Sí</button>
+              <button type="button" class="btn btn-outline-gray" data-dismiss="modal">No</button>
+          </div>
+      </app-modals-frame>
+
+  </div>
+</div>

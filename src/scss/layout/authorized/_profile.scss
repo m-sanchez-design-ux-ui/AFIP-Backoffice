@@ -1,0 +1,15 @@
+@import "../../vendors/bootstrap-abstracts";
+@import "../../abstracts/abstracts-module";
+
+.profile__container {
+
+  .profile__header {
+    background-image: linear-gradient(180deg, darken($primary, $theme-color-interval) 0rem, darken($primary, $theme-color-interval) 8rem, transparent 8rem);
+    height: 10rem;
+    overflow: visible;
+    .media {
+      margin-top: $spacer * 2;
+    }
+  }
+
+}

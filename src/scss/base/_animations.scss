@@ -1,0 +1,111 @@
+@import "../abstracts/abstracts-module";
+
+// opactityOn
+@include keyframes(opactityOn) {
+	0%, 10%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+// Icon Bounced
+@include keyframes(iconBouncedY) {
+	0%   { transform: scale(1,1)    translateY(0); }
+	10%  { transform: scale(1.1,.9) translateY(0); }
+	30%  { transform: scale(.9,1.1) translateY(-(math.div($spacer, 2))); }
+	50%  { transform: scale(1,1)    translateY(0); }
+	57%  { transform: scale(1,1)    translateY(-(math.div($spacer, 4))); }
+	64%  { transform: scale(1,1)    translateY(0); }
+	100% { transform: scale(1,1)    translateY(0); }
+}
+
+@include keyframes(iconBouncedX) {
+	0%   { transform: scale(1,1)    translateX(0); }
+	10%  { transform: scale(1.1,.9) translateX(0); }
+	30%  { transform: scale(.9,1.1) translateX(-(math.div($spacer, 2))); }
+	50%  { transform: scale(1,1)    translateX(0); }
+	57%  { transform: scale(1,1)    translateX(-(math.div($spacer, 4))); }
+	64%  { transform: scale(1,1)    translateX(0); }
+	100% { transform: scale(1,1)    translateX(0); }
+}
+
+// animation--pulse
+.animation-pulse {
+	display: none;
+	// @include clearfix();
+}
+
+@each $color, $value in $theme-colors {
+  .animation-pulse--#{$color} .animation-pulse {
+    border: math.div($spacer, 4) solid rgba($value, 0.8);
+  }
+}
+
+*[class*="animation-pulse--"] {
+	position: relative;
+	*[class*="badge__notif--"] ~ .animation-pulse {
+		border-radius: 50%;
+		height: $spacer * 2;
+		width: $spacer * 2;
+		display: block;
+		position: absolute;
+		opacity: 0;
+		@include prefixes(animation-name, animation-pulse);
+		@include prefixes(animation-duration, 2s);
+		@include prefixes(animation-iteration-count, infinite);
+		@include prefixes(animation-timing-function, ease-in-out);
+	}
+}
+
+@include keyframes(animation-pulse) {
+	0% {
+		@include prefixes(transform, scale(0.2, 0.2));
+		opacity: 0.0;
+	}
+	60% {
+		@include prefixes(transform, scale(0.2, 0.2));
+		opacity: 0.0;
+	}
+	65% {
+		opacity: 1;
+	}
+	100% {
+		@include prefixes(transform, scale(1.2, 1.2));
+		opacity: 0.0;
+	}
+}
+
+// animation--notifications
+.notificationes__text,
+.notificationes__small {
+	margin-right: $spacer;
+	@include prefixes(transition, $transition-base);
+	@include prefixes(animation-name, notificationsSkeleton);
+	@include prefixes(animation-timing-function, linear);
+	@include prefixes(animation-iteration-count, infinite);
+	@include prefixes(animation-fill-mode, forwards);
+}
+.notificationes__text {
+	@include themify() {
+		background-image: getThemifyVariable('notificationes__text--background');
+	}
+	width: calc(100% - $spacer);
+	height: $spacer;
+	@include prefixes(animation-duration, 5s);
+}
+.notificationes__small {
+	@include themify() {
+		background-image: getThemifyVariable('notificationes__small--background');
+	}
+	width: calc(100% - $spacer);
+	height: math.div($spacer, 2);
+	margin-top: math.div($spacer, 2);
+	@include prefixes(animation-duration, 6s);
+}
+
+@include keyframes(notificationsSkeleton) {
+	0% {
+		background-position: -500px 0
+	}
+	100% {
+		background-position: 500px 0
+	}
+}

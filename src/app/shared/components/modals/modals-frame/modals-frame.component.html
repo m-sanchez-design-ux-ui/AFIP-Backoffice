@@ -1,0 +1,12 @@
+<div class="modal-content">
+  <form [noValidate]="false">
+
+      <!-- Header content -->
+      <ng-content select="[header]"></ng-content>
+      <!-- Body content -->
+      <ng-content select="[body]"></ng-content>
+      <!-- Action content -->
+      <ng-content select="[footer]"></ng-content>
+
+  </form>
+</div>

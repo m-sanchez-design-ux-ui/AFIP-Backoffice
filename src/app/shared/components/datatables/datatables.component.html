@@ -1,0 +1,16 @@
+<div class="!bg-white rounded-lg shadow border mt-4">
+  <table
+    datatable
+    [dtOptions]="dtOptions"
+    class="table table--separate-rows table-striped display nowrap"
+  >
+    <thead>
+      <tr>
+        @for (title of titlesList() ; track $index) {
+        <th>{{ title }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>

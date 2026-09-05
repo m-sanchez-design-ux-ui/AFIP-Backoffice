@@ -1,0 +1,183 @@
+@import "../abstracts/functions";
+@import "../abstracts/variables";
+
+$themes: (
+  light: (
+    general-color: $white,
+    // Primary Color
+    primary-color: $primary,
+    secondary-color: $secondary,
+    // Layout
+    section--background: darken($white, 4%),
+    table-row-par-color: darken($white, 4%),
+    nav--background: $white,
+    components--background: $white,
+    components--background-hover: rgba($black, 0.05),
+    components--background-300: darken($white, 3%),
+    background-thead-table: darken($white, 3%),
+    // Shadow
+    shadow: 0 0 $spacer rgba($black, 0.1),
+    shadow--hover: 0 0 $spacer rgba($black, 0.2),
+    // Opacity
+    opacity: 0.2,
+    opacity--hover: 0.15,
+    // Fonts
+    font--nav-color: $gray-300,
+    //font--color: $black, (Conflict with tailwind css text color)
+    font--color-hover: lighten($black, 10%),
+    font--table-color: $gray-800,
+    // Links
+    link--color: $info,
+    link--color-hover: lighten($info, 10%),
+    // Divider
+    divider: 1px solid $gray-100,
+    // Notifications
+    notificationes__text--background:
+      linear-gradient(
+        to right,
+        darken($white, 4%) 30%,
+        $gray-100 60%,
+        darken($white, 4%) 90%
+      ),
+    notificationes__small--background:
+      linear-gradient(
+        to right,
+        darken($white, 4%) 30%,
+        $gray-100 60%,
+        darken($white, 4%) 90%
+      ),
+    // Border
+    border: 1px solid $gray-300,
+    thead-table-border: 2px solid darken($white, 10%),
+    border-menu-options: $gray-100,
+    // Input Custom
+    table-input-select: $white,
+    filter-color: brightness(1) invert(0),
+  ),
+  dark: (
+    general-color: $gray-700,
+    // Primary Color
+    primary-color: lighten($purple, 20%),
+    secondary-color: $secondary,
+    // Layout
+    section--background: $gray-800,
+    table-row-par-color: $gray-800,
+    nav--background: $gray-700,
+    components--background: $gray-700,
+    components--background-hover: rgba($white, 0.05),
+    components--background-300: $gray-300,
+    background-thead-table: lighten($gray-600, 10%),
+    // Shadow
+    shadow: 0 0 $spacer rgba($black, 0.6),
+    shadow--hover: 0 0 $spacer rgba($black, 1),
+    // Opacity
+    opacity: 0.8,
+    opacity--hover: 0.9,
+    // Fonts
+    font--nav-color: $gray-400,
+    font--color: $white,
+    font--color-hover: darken($white, 20%),
+    font--table-color: $white,
+    // Links
+    link--color: $info,
+    link--color-hover: lighten($info, 10%),
+    // Divider
+    divider: 1px solid $dark-blue-300,
+    // Notifications
+    notificationes__text--background:
+      linear-gradient(to right, $gray-700 30%, $gray-600 60%, $gray-700 90%),
+    notificationes__small--background:
+      linear-gradient(to right, $gray-800 30%, $gray-700 60%, $gray-800 90%),
+    // Border
+    border: 1px solid lighten($dark-blue-300, 40%),
+    thead-table-border: 2px solid lighten($dark-blue-300, 10%),
+    border-menu-options: $gray-400,
+    // Input Custom
+    table-input-select: $gray-600,
+    filter-color: brightness(0) invert(1),
+  ),
+  dark_blue: (
+    general-color: $dark-blue-600,
+    // Primary Color
+    primary-color: lighten($primary, 6%),
+    secondary-color: $secondary,
+    // Layout
+    section--background: $dark-blue-900,
+    table-row-par-color: $dark-blue-900,
+    nav--background: $dark-blue-600,
+    components--background: $dark-blue-600,
+    components--background-hover: rgba($white, 0.05),
+    components--background-300: $dark-blue-300,
+    background-thead-table: lighten($dark-blue-600, 10%),
+    // Shadow
+    shadow: 0 0 $spacer rgba($black, 0.6),
+    shadow--hover: 0 0 $spacer rgba($black, 1),
+    // Opacity
+    opacity: 0.8,
+    opacity--hover: 0.9,
+    // Fonts
+    font--nav-color: $gray-600,
+    font--color: $white,
+    font--color-hover: darken($white, 20%),
+    font--table-color: $white,
+    // Links
+    link--color: $info,
+    link--color-hover: lighten($info, 10%),
+    // Divider
+    divider: 1px solid $dark-blue-300,
+    // Notifications
+    notificationes__text--background:
+      linear-gradient(to right, $gray-700 30%, $gray-600 60%, $gray-700 90%),
+    notificationes__small--background:
+      linear-gradient(to right, $gray-800 30%, $gray-700 60%, $gray-800 90%),
+    // Border
+    border: 1px solid lighten($dark-blue-300, 40%),
+    thead-table-border: 2px solid lighten($dark-blue-300, 10%),
+    border-menu-options: $gray-600,
+    // Input Custom
+    table-input-select: $dark-blue-300,
+    filter-color: brightness(0) invert(1),
+  ),
+  glass_gradient: (
+    general-color: $dark-blue-600,
+    // Primary Color
+    primary-color: $dark-blue-600,
+    secondary-color: $secondary,
+    // Layout
+    section--background: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%),
+    table-row-par-color: rgba(255, 255, 255, 0.41),
+    nav--background: $primary,
+    components--background: #00000052,
+    components--background-hover: rgba($white, 0.05),
+    components--background-300: $dark-blue-300,
+    background-thead-table: lighten($dark-blue-600, 10%),
+    // Shadow
+    shadow: 0 0 $spacer rgba($black, 0.6),
+    shadow--hover: 0 0 $spacer rgba($black, 1),
+    // Opacity
+    opacity: 0.8,
+    opacity--hover: 0.9,
+    // Fonts
+    font--nav-color: $gray-600,
+    font--color: $white,
+    font--color-hover: darken($white, 20%),
+    font--table-color: $white,
+    // Links
+    link--color: $info,
+    link--color-hover: lighten($info, 10%),
+    // Divider
+    divider: 1px solid $dark-blue-300,
+    // Notifications
+    notificationes__text--background:
+      linear-gradient(to right, $gray-700 30%, $gray-600 60%, $gray-700 90%),
+    notificationes__small--background:
+      linear-gradient(to right, $gray-800 30%, $gray-700 60%, $gray-800 90%),
+    // Border
+    border: 1px solid lighten($dark-blue-300, 40%),
+    thead-table-border: 2px solid lighten($dark-blue-300, 10%),
+    border-menu-options: $gray-600,
+    // Input Custom
+    table-input-select: $dark-blue-300,
+    filter-color: brightness(0) invert(1),
+  ),
+);
