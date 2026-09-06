@@ -2,6 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 
+import { MOCK_NOTIFICATIONS } from 'app/shared/mocks/mock-data';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +14,11 @@ export class NotificationsAlertService implements OnDestroy {
   private readonly subscriptions: Subscription[] = [];
   private readonly batchList!: any[];
   private readonly distributionList!: any[];
-  notifications: any[] = [];
+  // DEMO NOTE: seeded with fictional notifications so the bell icon isn't
+  // empty. This service never actually calls a backend for notifications
+  // (it's in-memory + localStorage in the real app too), so no interceptor
+  // change was needed for this.
+  notifications: any[] = [...MOCK_NOTIFICATIONS];
   private readonly keyBatches = 'batches';
   private readonly keyDistributions = 'distributions';
 

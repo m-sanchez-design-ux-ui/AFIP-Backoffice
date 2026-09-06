@@ -172,10 +172,17 @@ export class DashboardListComponent
         },
         //New column start
         {
+          // DEMO NOTE: in the original app this column was hardcoded to
+          // "000000" for every row (`defaultContent`), since it was added
+          // to the UI before the backend exposed real serial numbers.
+          // For this demo it reads the mocked `serialNumber` field so the
+          // table looks representative of real data.
           name: 'serialNumber',
-          data: null,           
-          orderable: false,    
-          defaultContent: '<span class="text-sm font-medium">000000</span>', 
+          data: 'serialNumber',
+          orderable: false,
+          render: (data) => {
+            return `<span class="text-sm font-medium">` + data + `</span>`;
+          },
         },
         //New column end
         {
